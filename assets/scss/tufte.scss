@@ -5,58 +5,27 @@
 
 @charset "UTF-8";
 
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");
-    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"),
-        url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"),
-        url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"),
-        url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
+@import "fonts/variables";
 
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");
-    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix")
-            format("embedded-opentype"),
-        url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff")
-            format("woff"),
-        url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf")
-            format("truetype"),
-        url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf")
-            format("svg");
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");
-    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"),
-        url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"),
-        url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"),
-        url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "et-book-roman-old-style";
-    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");
-    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix")
-            format("embedded-opentype"),
-        url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"),
-        url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"),
-        url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-$serif-fonts: et-book, "Noto Serif SC", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif, "Noto Emoji";
-$sans-fonts: "Gill Sans", "Gill Sans MT", Calibri, sans-serif, "Noto Emoji";
-$mono-fonts: Consolas, "Liberation Mono", Menlo, Courier, monospace, "Noto Emoji";
+/* Tufte CSS styles */
+/*
+ * Responsive font-size: Mobile-first progressive enhancement
+ *
+ * 원본 Tufte CSS (edwardtufte/tufte-css)는 고정 15px을 사용하여
+ * 반응형 디자인이 없었습니다. 이는 2015년경 작성된 것으로
+ * 모던 웹 디자인 표준이 확립되기 이전입니다.
+ *
+ * Jekyll Tufte 테마 (clayh53/tufte-jekyll)는 이를 개선하여
+ * 화면 크기에 따라 11px~17px로 점진적으로 증가하는
+ * mobile-first 방식을 적용했습니다.
+ *
+ * 이 Hugo 테마는 원본을 충실히 포팅했으나, UX 개선을 위해
+ * Jekyll 버전의 반응형 접근을 채택합니다.
+ *
+ * 변경 이력:
+ * - 2025-10-10: Jekyll 방식 반응형 font-size 적용
+ * - 참고: content/log/2025-10-10-tufte-responsive-font.md
+ */
 
 /* Tufte CSS styles */
 html {
@@ -64,6 +33,7 @@ html {
 }
 
 body {
+    width: 87.5%;
     margin-left: auto;
     margin-right: auto;
     padding-left: 12.5%;
@@ -71,42 +41,45 @@ body {
     background-color: #fffff8;
     color: #111;
     max-width: 1400px;
+    counter-reset: sidenote-counter;
 }
 
-h1, h2, h3 {
-    font-weight: 400;
-    line-height: 1;
-}
-
+/* 원본 tufte.css 방식: 각 헤더 레벨 개별 정의 (커플링 최소화) */
 h1 {
+    font-weight: 400;
     margin-top: 4rem;
     margin-bottom: 1.5rem;
     font-size: 3.2rem;
-}
-
-h2, h3 {
-    font-style: italic;
-    margin-bottom: 0;
+    line-height: 1;
 }
 
 h2 {
+    font-style: italic;
+    font-weight: 400;
     margin-top: 2.1rem;
+    margin-bottom: 1.4rem;
     font-size: 2.2rem;
+    line-height: 1;
 }
 
 h3 {
+    font-style: italic;
+    font-weight: 400;
     font-size: 1.7rem;
     margin-top: 2rem;
+    margin-bottom: 1.4rem;
+    line-height: 1;
 }
 
-.author, .date {
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin: 1rem auto 1rem 0;
-  line-height: 1;
+.author,
+.date {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 1rem auto 1rem 0;
+    line-height: 1;
 }
 
-.subtitle {
+p.subtitle {
     font-style: italic;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -167,20 +140,20 @@ p {
     margin: 3em 0;
 }
 
-.epigraph > blockquote {
+.epigraph>blockquote {
     margin-top: 3em;
     margin-bottom: 3em;
 }
 
-.epigraph > blockquote {
+.epigraph>blockquote {
     font-style: italic;
 }
 
-.epigraph > blockquote > footer {
+.epigraph>blockquote>footer {
     font-style: normal;
 }
 
-.epigraph > blockquote > footer > cite {
+.epigraph>blockquote>footer>cite {
     font-style: italic;
 }
 
@@ -208,12 +181,13 @@ dl {
     -webkit-padding-end: 5%;
 }
 
-li  ul {
+li ul {
     width: 100%;
 }
 
 li,
-dt, dd {
+dt,
+dd {
     padding: 0.5rem 0;
 }
 
@@ -286,33 +260,49 @@ img {
     line-height: 1.6;
 }
 
-.marginnote-ind,
+/* Sidenote numbering via CSS counter (원본 tufte.css 방식) */
 .sidenote-number {
-    // font-family: et-book-roman-old-style, "Noto Emoji";
-    position: relative;
-    vertical-align: baseline;
-    user-select: none;
+    counter-increment: sidenote-counter;
 }
 
-// note indicator
-label.marginnote-ind,
-label.sidenote-number {
+.sidenote-number:after,
+.sidenote:before {
+    font-family: et-book-roman-old-style, serif;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.sidenote-number:after {
+    content: counter(sidenote-counter);
     font-size: 1rem;
     top: -0.5rem;
     left: 0.1rem;
 }
 
-// inside sidenote
-span.marginnote-ind,
-span.sidenote-number {
-    font-size: 1.1rem;
+.sidenote:before {
+    content: counter(sidenote-counter) " ";
+    font-size: 1rem;
+    top: -0.5rem;
+}
+
+/* Marginnote indicator */
+.marginnote-ind {
+    position: relative;
+    vertical-align: baseline;
+    user-select: none;
+}
+
+label.marginnote-ind {
+    font-size: 1rem;
+    top: -0.5rem;
+    left: 0.1rem;
 }
 
 p,
 footer,
 table,
 div.table-wrapper-small,
-div.supertable-wrapper > p,
+div.supertable-wrapper>p,
 div.booktabs-wrapper {
     width: 55%;
 }
@@ -328,25 +318,30 @@ div.table-wrapper {
 }
 
 @media screen and (max-width: 760px) {
+
     h2,
     h3,
     p,
     footer {
         width: 90%;
     }
+
     ul,
     ol,
     dl {
         width: 85%;
     }
+
     figure {
         max-width: 90%;
     }
+
     figcaption,
     figure.fullwidth figcaption {
         margin-right: 0%;
         max-width: none;
     }
+
     blockquote p,
     blockquote footer {
         width: 90%;
@@ -411,17 +406,18 @@ input.margin-toggle {
 }
 
 label:has(+ input.margin-toggle:focus) {
-  outline: medium auto currentColor;
-  outline: medium auto invert;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -3px;
+    outline: medium auto currentColor;
+    outline: medium auto invert;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -3px;
 }
 
 label.sidenote-number {
-    display: inline;
+    display: inline-block;
+    max-height: 2rem;
 }
 
-label.marginnote-ind {
+label.margin-toggle:not(.sidenote-number) {
     display: none;
 }
 
@@ -444,13 +440,19 @@ label.marginnote-ind {
 }
 
 @media (max-width: 760px) {
-    label.marginnote-ind {
+    label.margin-toggle:not(.sidenote-number) {
         display: inline;
     }
+
+    label {
+        cursor: pointer;
+    }
+
     .sidenote,
     .marginnote {
         display: none;
     }
+
     .margin-toggle:checked + .sidenote,
     .margin-toggle:checked + .marginnote {
         display: block;
@@ -462,10 +464,12 @@ label.marginnote-ind {
         vertical-align: baseline;
         position: relative;
     }
+
     pre.code {
         width: 90%;
         padding: 0;
     }
+
     .table-caption {
         display: block;
         float: right;
@@ -478,17 +482,21 @@ label.marginnote-ind {
         vertical-align: baseline;
         position: relative;
     }
+
     div.table-wrapper,
     table,
     table.booktabs {
         width: 85%;
     }
+
     div.table-wrapper {
         border-right: 1px solid #efefef;
     }
+
     img {
         width: 100%;
     }
+
     .video {
         width: 90%;
     }
