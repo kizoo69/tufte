@@ -1,0 +1,4 @@
+<details{{ with .Get "open" }} open{{ end }}{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+<summary>{{ .Get "summary" | default "Details" }}</summary>
+{{ .Inner | $.Page.RenderString (dict "display" "block") }}
+</details>
