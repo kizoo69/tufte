@@ -281,17 +281,26 @@ table.fullwidth {
 }
 
 div.table-wrapper {
-    overflow-x: scroll;
-    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif, "Noto Emoji";
+    overflow-x: auto;
+    font-family: $sans-fonts;
 }
 
-@media screen and (max-width: 760px) {
+@media (max-width: 760px) {
+    body {
+        width: 84%;
+        padding-left: 8%;
+        padding-right: 8%;
+    }
 
-    h2,
-    h3,
-    p,
-    footer {
-        width: 90%;
+    hr,
+    section > p,
+    section > footer,
+    section > table {
+        width: 100%;
+    }
+
+    pre > code {
+        width: 97%;
     }
 
     section > dl,
@@ -310,9 +319,18 @@ div.table-wrapper {
         max-width: none;
     }
 
+    blockquote {
+        margin-left: 1.5em;
+        margin-right: 0em;
+    }
+
     blockquote p,
     blockquote footer {
         width: 90%;
+    }
+
+    label {
+        cursor: pointer;
     }
 }
 
@@ -323,10 +341,15 @@ div.table-wrapper {
 
 code,
 .code,
-kbd {
+kbd,
+pre > code {
     font-family: $mono-fonts;
-    font-size: 1.125rem;
+    font-size: 1.0rem;
     line-height: 1.42;
+}
+
+.sans > code {
+    font-size: 1.2rem;
 }
 
 h1 .code,
@@ -340,11 +363,16 @@ h3 .code {
     font-size: 1rem;
 }
 
-pre.code {
+pre > code {
     font-size: 0.9rem;
     width: 52.5%;
-    padding-left: 2.5%;
-    overflow-x: scroll;
+    margin-left: 2.5%;
+    overflow-x: auto;
+    display: block;
+}
+
+pre.fullwidth > code {
+    width: 90%;
 }
 
 .fullwidth {

@@ -33,6 +33,14 @@ This fork aims to restore styles closer to the original [tufte-css](https://gith
 | list width | 50% | 45% | 50% |
 | list item spacing | 0.25rem | 0.5rem | 0.25rem |
 | link underline | offset + thickness | removed | restored |
+| code font-size | 1.0rem | 1.125rem | 1.0rem |
+| pre > code overflow-x | auto | scroll | auto |
+| .sans > code | 1.2rem | removed | 1.2rem |
+| pre.fullwidth > code | width: 90% | removed | width: 90% |
+| table-wrapper overflow-x | auto | scroll | auto |
+| 760px body padding | 84%, 8% | removed | restored |
+| 760px blockquote margin | 1.5em 0 | removed | restored |
+| 760px label cursor | pointer | removed | pointer |
 
 ### Why These Changes?
 
@@ -121,11 +129,6 @@ toc: true       # Show table of contents
 - `blockquote` - Block quotations with attribution
 
 See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for examples.
-
-## Documentation
-
-- [ANALYSIS-tufte-css-comparison.md](assets/scss/ANALYSIS-tufte-css-comparison.md) - Detailed comparison with original tufte-css
-- [ANALYSIS-scss-files.md](assets/scss/ANALYSIS-scss-files.md) - SCSS file structure
 
 ## License
 
