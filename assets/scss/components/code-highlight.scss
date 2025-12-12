@@ -1,18 +1,11 @@
 $ht-code-border-radius: .4em;
 .highlight {
-    width: 50%;
-    overflow-x: scroll;
+    width: 52.5%;
+    overflow-x: auto;
     // border-radius: $ht-code-border-radius;
     margin-top: 1.4em;
     margin-bottom: 1.4em;
-    margin-right: 2.5%;
     margin-left: 2.5%;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
 
     &>.chroma {
