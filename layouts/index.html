@@ -6,12 +6,12 @@
   {{ . }}
   </section>
 {{ end }}
-<section class="page-list">
+<section class="posts">
 {{ $pgFilter1 := where .Site.RegularPages "Draft" false }}
 {{ $pgFilter2 := where .Site.RegularPages "Params.date" "!=" nil }}
 {{ $pgFilter := $pgFilter1 | intersect $pgFilter2 }}
 {{ range (.Paginate $pgFilter).Pages }}
-  <h2 class="content-title">
+  <h2>
   {{ if .IsNode }}
   <a href="{{ .Permalink }}">{{ .Title}}</a>
   {{ else }}

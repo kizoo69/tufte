@@ -1,4 +1,1 @@
-{{- $id := printf "sidenote-%d" .Ordinal -}}
-<label for="{{ $id }}" class="margin-toggle sidenote-number"></label>
-<input type="checkbox" id="{{ $id }}" class="margin-toggle"/>
-<span class="sidenote"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ .Inner | markdownify }}</span>
+{{- $id := printf "sidenote-%d" .Ordinal -}}<label for="{{ $id }}" class="margin-toggle sidenote-number"></label><input type="checkbox" id="{{ $id }}" class="margin-toggle"/><span class="sidenote"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ .Inner | markdownify }}</span>

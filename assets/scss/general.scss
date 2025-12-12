@@ -7,8 +7,8 @@
 /* ------------------------------------------------------------------------ */
 /* Generic content, such as the index list pages */
 /* ------------------------------------------------------------------------ */
-:root * {
-      text-align: left;
+/* Enable ligatures (fi, fl, etc.) and improved kerning */
+:root {
       text-rendering: optimizeLegibility;
 }
 
@@ -60,28 +60,6 @@ kbd {
 
 mark {
     background: #f0d9bb;
-}
-
-/* ------------------------------------------------------------------------ */
-/* Styling for listing pages. */
-/* ------------------------------------------------------------------------ */
-.list-page {
-    ul {
-        list-style-type: none;
-        margin: -0.25em;
-        width: 87.5%;
-        max-width: 45rem;
-    }
-    li {
-        margin: 0;
-        /*font-size: 95%;*/
-    }
-}
-.list-page .list-date {
-    display: inline;
-    font-size: 0.75em;
-    /* padding-right: 2em; */
-    /* margin-right: 2em; */
 }
 
 table:not(.lntable) {
@@ -259,10 +237,24 @@ mjx-container[jax="CHTML"][display="true"],
 /* Styling for i18n. */
 /* ------------------------------------------------------------------------ */
 
-/* reduce zh & ja font-size to match en */
+/* Hyphenation: enabled for Latin scripts, disabled for CJK */
+p {
+    hyphens: auto;
+    -webkit-hyphenate-limit-before: 3;
+    -webkit-hyphenate-limit-after: 4;
+    -ms-hyphenate-limit-chars: 10 3 4;
+    hyphenate-limit-chars: 10 3 4;
+}
 
+p:lang(ko),
+p:lang(zh),
+p:lang(ja) {
+    hyphens: none;
+}
+
+/* reduce zh & ja font-size to match en */
 p:lang(zh), span:lang(zh),
-p:lang(ja), span:lang(ja), {
+p:lang(ja), span:lang(ja) {
     font-size: 1.2rem;
 }
 

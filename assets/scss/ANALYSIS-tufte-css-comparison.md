@@ -195,8 +195,10 @@ h3 {
 
 ## 7. 블로그용 클래스 추가 (신규)
 
+### 7.1 작성자/날짜 메타 정보 스타일
+
 ```scss
-/* hugo-tufte에서 추가 (102-107행) */
+/* hugo-tufte에서 추가 (tufte.scss 74-80행) */
 .author, .date {
   font-size: 1.4rem;
   font-weight: 400;
@@ -204,6 +206,55 @@ h3 {
   line-height: 1;
 }
 ```
+
+**사용처**: `layouts/partials/content.header.html`
+
+```html
+<!-- 개별 글 상단의 메타 정보 표시 -->
+<span class="content-meta">
+  {{- if .Params.author -}}
+  <p class="author">{{ .Params.author }}</p>
+  {{- end -}}
+
+  {{- if not .Params.hidedate -}}
+  <p class="date">{{ .Date.Format "2006-01-02" }}</p>
+  {{- end -}}
+  <!-- ... 읽기 시간, 태그 등 ... -->
+</span>
+```
+
+**활성화 조건**: Front matter에서 `meta: true` 설정 필요
+
+```yaml
+---
+title: "글 제목"
+author: "홍길동"
+date: 2025-12-10
+meta: true        # ← 이 값이 true여야 author, date가 표시됨
+hidedate: false   # ← true면 날짜 숨김
+---
+```
+
+**추가 스타일**: `components/meta.scss`에서 `.content-meta .author` 추가 스타일 정의 가능
+
+```scss
+/* components/meta.scss */
+.content-meta {
+    display: block;
+    font-size: 1.1rem;
+    margin-top: 1em;
+}
+
+.content-meta .author {
+    /* 추가 색상 등 커스터마이징 가능 */
+}
+```
+
+**스타일 충돌 주의**: `tufte.scss`의 `.author, .date`와 `meta.scss`의 `.content-meta .author`가 중복 정의됨. `meta.scss`의 선택자가 더 구체적이므로 우선 적용됨.
+
+---
+
+### 7.2 홈페이지 글 목록 스타일
 
 ```scss
 /* hugo-tufte에서 추가 (136-143행) */
@@ -217,7 +268,43 @@ h3 {
 }
 ```
 
-**이유**: 블로그 메타 정보(작성자, 날짜)와 목록 페이지 스타일링
+**사용처**: `layouts/index.html` (홈페이지)
+
+```html
+<!-- 홈페이지의 최근 글 목록 -->
+<section class="page-list">
+{{ range (.Paginate $pgFilter).Pages }}
+  <h2 class="content-title">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h2>
+  {{ if .Description }}
+  <p>{{ .Description }}</p>
+  {{ end }}
+{{ end }}
+</section>
+```
+
+**동작**:
+- 첫 번째 글 제목: `margin-top: 1.4rem` (상단 여백 최소화)
+- 이후 글 제목: `margin-top: 4.2rem` (글 사이 충분한 간격)
+
+**참고**: `layouts/_default/list.html`의 아카이브 페이지는 `.list-page` 클래스 사용 (다른 레이아웃)
+
+---
+
+### 7.3 관련 클래스 요약
+
+| 클래스 | 사용 위치 | 용도 |
+|--------|-----------|------|
+| `.author` | content.header.html | 개별 글의 작성자 표시 |
+| `.date` | content.header.html | 개별 글의 작성일 표시 |
+| `.content-meta` | content.header.html | 메타 정보 컨테이너 |
+| `.content-title` | content.header.html, index.html | 글 제목 (h1, h2) |
+| `.page-list` | index.html | 홈페이지 글 목록 섹션 |
+| `.list-page` | list.html | 아카이브 페이지 섹션 |
+| `.list-date` | list.html | 아카이브의 날짜 (다른 형식: "Jan 2") |
+
+**이유**: 원본 tufte-css는 정적 페이지용이므로 블로그 메타 정보 스타일이 없음. Hugo 테마로 변환하면서 블로그 기능에 필요한 클래스 추가
 
 ---
 
@@ -316,7 +403,7 @@ blockquote footer {
 
 ---
 
-## 12. 리스트 스타일
+_## 12. 리스트 스타일
 
 ```css
 /* 원본 */
@@ -364,7 +451,7 @@ dt {
 | padding-end | 없음 | 5% | 양쪽 패딩 균형 |
 | li 간격 | 0.25rem | 0.5rem | 가독성 향상 |
 | dt 굵기 | 없음 | 700 | 정의 목록 강조 |
-| 중첩 리스트 | 없음 | 100% | 중첩 시 너비 유지 |
+| 중첩 리스트 | 없음 | 100% | 중첩 시 너비 유지 |_
 
 ---
 
@@ -373,8 +460,11 @@ dt {
 ```css
 /* 원본 */
 figcaption {
-    ...
-    margin-right: -60%;  /* sidenote와 동일 */
+    float: right;
+    clear: right;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* margin-right 없음 */
     ...
 }
 ```
@@ -383,12 +473,12 @@ figcaption {
 /* hugo-tufte */
 figcaption {
     ...
-    margin-right: -48%;  /* 다른 값 */
+    margin-right: -48%;  /* 원본에 없는 속성 */
     ...
 }
 ```
 
-**이유**: 불명확. 원본과 다른 레이아웃 의도로 보임
+**분석 오류 정정**: 원본에는 `figcaption`에 `margin-right`가 없음. 이전 분석의 `-60%`는 잘못된 정보
 
 ---
 

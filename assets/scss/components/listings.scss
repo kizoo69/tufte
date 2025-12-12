@@ -1,0 +1,49 @@
+/*
+ * Listing view styles
+ *
+ * Three listing view types:
+ * - .posts: Card-style (h2 + description) - home page
+ * - .by-date: Date-sorted (year > month > day) - archive page
+ * - .by-title: Title-sorted (alphabetical) - book layouts
+ */
+
+/* Card-style post list (home page) */
+.posts h2 {
+    margin-top: 4.2rem;
+    margin-bottom: 1.4rem;
+}
+
+.posts h2:first-of-type {
+    margin-top: 1.4rem;
+}
+
+/* Date-sorted list (archive page) */
+.by-date {
+    ul {
+        list-style-type: none;
+        margin: -0.25em;
+        width: 87.5%;
+        max-width: 45rem;
+    }
+    li {
+        margin: 0;
+    }
+}
+
+.by-date .date {
+    display: inline;
+    font-size: 0.75em;
+}
+
+/* Title-sorted list (book layouts) */
+.by-title {
+    ul {
+        list-style-type: none;
+        margin: -0.25em;
+        width: 87.5%;
+        max-width: 45rem;
+    }
+    li {
+        margin: 0;
+    }
+}

@@ -1,6 +1,10 @@
 <div class="epigraph">
 <blockquote>
+{{- if .Get "nowrap" -}}
+{{ .Inner | markdownify }}
+{{- else -}}
 {{ .Inner | $.Page.RenderString (dict "display" "block") }}
+{{- end -}}
 {{ if .IsNamedParams }}
     <footer>
     {{- with .Get "author" -}}{{ . }}{{- end -}}

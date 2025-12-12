@@ -6,7 +6,7 @@
 {{ partial "brand.html" . }}
 {{ partial "content.header.html" . }}
 
-<section class="list-page">
+<section class="by-date">
 {{ range .Data.Pages.GroupByDate "2006" }}
   <ul>
   <li class="year">{{ .Key }} ({{ len .Pages }})</li>
@@ -16,7 +16,7 @@
       {{ range .Pages }}
       <ul>
       <li>
-        <span class="list-date">{{ .Date.Format "Jan 2" }} &middot;</span>
+        <span class="date">{{ .Date.Format "Jan 2" }} &middot;</span>
         <a href="{{ .RelPermalink }}">{{.Title}}</a>
       </li>
       </ul>
