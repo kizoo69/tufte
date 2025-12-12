@@ -1,28 +1,33 @@
-<!-- <script src="{{ "/js/math-code.js" | relURL }}"></script> -->
-{{ $script := resources.Get "latex-fix.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}
+<!-- MathJax 3: CDN primary, local fallback -->
 
-<link rel="stylesheet" href="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-<!-- do not add onload attributes, breaks settings below -->
+<!-- MathJax configuration -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            // delimiters: [
-            //     {left: "$$\n", right: "\n$$", display: true},
-            //     {left: "$$", right: "$$", display: false},
-            //     {left: "\\[", right: "\\]", display: true},
-            //     {left: "\\(", right: "\\)", display: false}
-            // ],
-            trust: (context) => ['\\htmlId', '\\href'].includes(context.command),
-            macros: {
-              "\\eqref": "\\href{###1}{(\\text{#1})}",
-              "\\ref": "\\href{###1}{\\text{#1}}",
-              "\\label": "\\htmlId{#1}{}"
-            }
-        });
-    });
+MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        tags: 'ams'
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+};
+</script>
+
+<!-- Local fallback function -->
+<script>
+function loadLocalMathJax() {
+    var script = document.createElement('script');
+    script.src = '{{ "/lib/mathjax/es5/tex-mml-chtml.js" | relURL }}';
+    script.async = true;
+    document.head.appendChild(script);
+    console.log('MathJax CDN failed, loading local copy');
+}
+</script>
+
+<!-- MathJax 3 from CDN, fallback to local on error -->
+<script id="MathJax-script" async
+    src="//cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"
+    onerror="loadLocalMathJax()">
 </script>
