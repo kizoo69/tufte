@@ -341,7 +341,8 @@ div.table-wrapper {
 
 code,
 .code,
-kbd {
+kbd,
+pre > code {
     font-family: $mono-fonts;
     font-size: 1.0rem;
     line-height: 1.42;
