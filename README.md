@@ -1,130 +1,132 @@
 # Tufte Hugo Theme
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md) [![Test Build](https://github.com/loikein/hugo-tufte/actions/workflows/test-build.yml/badge.svg)](https://github.com/loikein/hugo-tufte/actions/workflows/test-build.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/0a3e11e2-0209-40bb-8570-c3eb9b8471dc/deploy-status)](https://app.netlify.com/sites/huto-tufte/deploys)
+A Hugo theme based on Edward Tufte's distinctive typography style.
 
-## History of this project
+**Demo**: [kizoo.gitlab.io](https://kizoo.gitlab.io)
 
-Hugo-Tufte is a minimalist blog-like theme for the
-[static site generator Hugo](https://gohugo.io) that
-attempts to be a faithful implementation of the
-[Tufte-css](https://github.com/edwardtufte/tufte-css) project. The current version supports mathematical typesetting via [KaTeX](https://katex.org/).
+## History
 
-- The original repo: [shawnohare/hugo-tufte](https://github.com/shawnohare/hugo-tufte)
-- Second repo: [slashformotion/hugo-tufte](https://github.com/slashformotion/hugo-tufte)
-- This ([loikein/hugo-tufte](https://github.com/loikein/hugo-tufte)) is now the _de facto_ third repo although my original intension was only to make a few tweaks.
+This is a fork of [loikein/hugo-tufte](https://github.com/loikein/hugo-tufte), which itself evolved through:
 
-## Quickstart
+1. [shawnohare/hugo-tufte](https://github.com/shawnohare/hugo-tufte) (original)
+2. [slashformotion/hugo-tufte](https://github.com/slashformotion/hugo-tufte)
+3. [loikein/hugo-tufte](https://github.com/loikein/hugo-tufte)
 
-### Prerequisite: Hugo Extended
+This fork aims to restore styles closer to the original [tufte-css](https://github.com/edwardtufte/tufte-css) while keeping Hugo integration improvements.
 
-You'll need to install Hugo Extended for this theme to test it locally, since this theme uses SCSS.
+## Changes from loikein/hugo-tufte
 
-- On Windows:
-  - Using [Chocolatey](https://chocolatey.org/):
-    ```shell
-    choco install hugo-extended # remember, you might need admin privs
-    ```
-- On macOS:
-  + Using [Homebrew](https://brew.sh/):
-    ```shell
-    brew install hugo
-    ```
+### Restored to Original tufte-css
 
-### Check out the example site
+| Item | Original tufte-css | loikein fork | This fork |
+|------|-------------------|--------------|-----------|
+| Sidenote numbering | CSS counter | Hugo Scratch | CSS counter |
+| h2/h3 margin-bottom | 1.4rem | 0 | 1.4rem |
+| h2 margin-top | 2.1rem | 5.5rem | 2.1rem |
+| font-display | swap | missing | swap |
+| Math rendering | MathJax | KaTeX | MathJax 3 |
+| body width | 87.5% | removed | 87.5% |
+| subtitle selector | `p.subtitle` | `.subtitle` | `p.subtitle` |
+| epigraph margin | 5em | 3em | 5em |
+| blockquote width | 55% | 50% | 55% |
+| blockquote margin-right | 40px | removed | 40px |
+| list width | 50% | 45% | 50% |
+| list item spacing | 0.25rem | 0.5rem | 0.25rem |
+| link underline | offset + thickness | removed | restored |
 
-```shell
-git clone https://github.com/loikein/hugo-tufte.git
-cd hugo-tufte/exampleSite
-hugo server --buildDrafts --disableFastRender
+### Why These Changes?
+
+**Sidenote CSS Counter**
+
+The original tufte-css uses CSS counters for sidenote numbering:
+
+```css
+body { counter-reset: sidenote-counter; }
+.sidenote-number { counter-increment: sidenote-counter; }
+.sidenote-number:after { content: counter(sidenote-counter); }
 ```
 
-Then open `localhost:1313` or wherever it says in browser.
+loikein switched to Hugo's `.Scratch` for server-side numbering. However, this was likely a workaround for a KaTeX conflict—KaTeX CSS overwrites `body`'s `counter-reset`, breaking sidenote numbering. By switching to MathJax 3, we can use the original CSS counter approach.
 
-The showcase posts are:
+**h2/h3 Margin**
 
-- `The big old test page`
-- `Tufte CSS`
+loikein merged h2 and h3 styles:
 
-### For a new site
-
-```shell
-hugo new site <your-site-name>
-cd <your-site-name>/themes/
-git clone https://github.com/loikein/hugo-tufte.git
+```scss
+h2, h3 {
+    font-style: italic;
+    margin-bottom: 0;  /* was 1.4rem in original */
+}
 ```
 
-Add `theme: 'hugo-tufte'` to your `config.yaml` to let your site know to actually use _this_ theme, specifically.
+While more concise, this creates coupling between heading levels and loses the original spacing. We restored individual declarations with `margin-bottom: 1.4rem`.
 
-Then run `hugo server --buildDrafts --disableFastRender` and open `localhost:1313` or wherever it says in browser.
+**MathJax 3**
 
-## Features
+Switched from KaTeX to MathJax 3 because:
+- KaTeX's CSS conflicts with sidenote counters
+- MathJax 3 doesn't overwrite `body`'s `counter-reset`
+- CDN primary with local fallback for reliability
 
-### Math
+### Other Improvements
 
-In this version, I use [Yihui Xie's method](https://yihui.org/en/2018/07/latex-math-markdown/) to support (almost) seamless LaTeX rendering with [KaTeX](https://katex.org/).
+- `.author`, `.date` selectors scoped to `.content-meta` to prevent style leaks
+- Separated blog-specific styles from tufte.scss core
+- Analysis documents in `assets/scss/ANALYSIS-*.md`
 
-For usage and examples, refer to [./exampleSite/content/posts/tufte-features.md ](https://github.com/loikein/hugo-tufte/blob/main/exampleSite/content/posts/tufte-features.md).
+## Installation
 
-Downside: LaTeX in post title is no longer supported.
+Requires Hugo Extended (for SCSS support).
+
+```shell
+cd your-site/themes/
+git clone https://github.com/kizoo69/tufte.git
+```
+
+Add to your `config.yaml`:
+
+```yaml
+theme: 'tufte'
+```
+
+## Configuration
 
 ### Site Parameters
 
-`params` for this theme are:
-
-- `subtitle` string: If set, displayed under the main title.
-- `showPoweredBy` boolean: If `true`, display a shoutout to Hugo and this theme.
-- `copyrightHolder` string: Inserts the value in the default copyright notice.
-- `copyright` string: Custom copyright notice.
-- `math` boolean: Site wide kill switch for Latex support
-- `codeBlocksDark` boolean: If `true`, code blocks will use a dark theme.
-- `marginNoteInd` string: (NEW) Custom indicator for margin notes, with suggestions in comment. (Only displayed on mobile devices or inside `cols` shortcode.)
-- `sansSubtitle` boolean: If `true`, all subtitles (`h2` \& `h3`) will use up-right and sans-serif font. (As seen in _Visual Display of Quantitative Information_.)
-- (`centerArticle` boolean: Not implemented yet)
-
-**Socials**
-
-_(The followings have not been tested for this repo, use at your own risk.)_
-
-You can add links to your social media profile by using thoses parameters:
-
-- `github`: string
-- `gitlab`: string
-- `twitter`: string
-- `linkedin`: string
-- `patreon`: string
-- `youtube`: string
-- `medium`: string
-- `reddit`: string
-- `stackoverflow`: string
-- `instagram`: string
-- `mastodon`: string
-- `orcid`: string
-- `google_scholar`: string
-
-Please see [`exampleSite/config.yaml`](https://github.com/loikein/hugo-tufte/blob/main/exampleSite/config.yaml#L47) to see the full implementation with exemples.
+```yaml
+params:
+  subtitle: "Your subtitle"
+  showPoweredBy: true
+  copyrightHolder: "Your Name"
+  math: true              # Enable MathJax site-wide
+  codeBlocksDark: false   # Dark theme for code blocks
+```
 
 ### Page Parameters
 
-- `math` boolean: If `true`, try to render the page's LaTeX code using KaTeX.
-- `meta` boolean: If `true`, display page metadata such as author, date, categories.
-  + `hideDate` boolean: If `true`, do not display a page date in metadata.
-  + `hideReadTime` boolean: if `true`, do not display the page's reading time
-  estimate in metadata.
-- `toc` boolean: if true, display the table of contents for the page.
-- Layout parameters: (NEW)
-  + For more information, see [Hugo's Lookup Order | Hugo](https://gohugo.io/templates/lookup-order/).
-  + `type` string: If set to `book`, layout files in [./layouts/book/](https://github.com/loikein/hugo-tufte/tree/main/layouts/book) will be prioritised.
-  + `layout` string: If set, layout files with the name of this field's value will be prioritised.
+```yaml
+---
+title: "Post Title"
+math: true      # Enable MathJax for this page
+meta: true      # Show author/date metadata
+toc: true       # Show table of contents
+---
+```
 
-### Shortcodes
+## Shortcodes
 
-This theme provides the following shortcodes in an attempt to completely
-support all the features present in the [Tufte-css](https://github.com/edwardtufte/tufte-css) project.
+- `sidenote` - Numbered side notes
+- `marginnote` - Unnumbered margin notes
+- `epigraph` - Opening quotations
+- `blockquote` - Block quotations with attribution
 
-For usage and examples, refer to [./exampleSite/content/posts/tufte-features.md ](https://github.com/loikein/hugo-tufte/blob/main/exampleSite/content/posts/tufte-features.md).
+See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for examples.
 
-- `blockquote`
-- `div`
-- `epigraph`
-- `marginnote`
-- `sidenote`
+## Documentation
+
+- [ANALYSIS-tufte-css-comparison.md](assets/scss/ANALYSIS-tufte-css-comparison.md) - Detailed comparison with original tufte-css
+- [ANALYSIS-scss-files.md](assets/scss/ANALYSIS-scss-files.md) - SCSS file structure
+
+## License
+
+MIT
