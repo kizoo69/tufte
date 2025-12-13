@@ -6,10 +6,36 @@
 
 {{ block "main" . }}{{ end }}
 
-<!-- Load MathJax, if necessary. -->
+<!-- Load Katex, if necessary. -->
 {{ if or .Params.math .IsHome }}
 {{ partial "math.html" . }}
 {{ end }}
+
+<!-- Load Mermaid, if necessary. -->
+{{ if .Page.Store.Get "hasMermaid" }}
+  {{- $mermaidJS := resources.Get "lib/mermaid/mermaid.min.js" | fingerprint -}}
+  <script src="{{ $mermaidJS.RelPermalink }}" integrity="{{ $mermaidJS.Data.Integrity }}"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: {{ .Site.Params.mermaid.theme | default "neutral" | jsonify | safeJS }},
+      {{- with .Site.Params.mermaid.themeCSS }}
+      themeCSS: {{ . | jsonify | safeJS }},
+      {{- end }}
+    });
+  </script>
+{{ end }}
+
+<!-- Back to top button -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">^</button>
+<script>
+(function() {
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+})();
+</script>
 
 </body>
 

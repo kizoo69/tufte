@@ -7,10 +7,11 @@
   </section>
 {{ end }}
 <section class="posts">
-{{ $pgFilter1 := where .Site.RegularPages "Draft" false }}
-{{ $pgFilter2 := where .Site.RegularPages "Params.date" "!=" nil }}
-{{ $pgFilter := $pgFilter1 | intersect $pgFilter2 }}
-{{ range (.Paginate $pgFilter).Pages }}
+{{/* Filter: non-draft, has date, not type:book */}}
+{{ $pages := where .Site.RegularPages "Draft" false }}
+{{ $pages = where $pages "Params.date" "!=" nil }}
+{{ $pages = where $pages "Params.type" "!=" "book" }}
+{{ range (.Paginate $pages).Pages }}
   <h2>
   {{ if .IsNode }}
   <a href="{{ .Permalink }}">{{ .Title}}</a>

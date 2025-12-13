@@ -80,7 +80,9 @@ Switched from KaTeX to MathJax 3 because:
 
 - `.author`, `.date` selectors scoped to `.content-meta` to prevent style leaks
 - Separated blog-specific styles from tufte.scss core
-- Analysis documents in `assets/scss/ANALYSIS-*.md`
+- Mermaid diagram support (conditional loading)
+- Back-to-top button (appears on scroll)
+- Home page filters out `type: book` pages
 
 ## Installation
 
@@ -110,6 +112,27 @@ params:
   codeBlocksDark: false   # Dark theme for code blocks
 ```
 
+### Mermaid Diagrams
+
+```yaml
+params:
+  mermaid:
+    theme: neutral    # Mermaid theme
+    themeCSS: |       # Optional custom CSS
+      * { font-family: 'Mona Sans', sans-serif !important; }
+```
+
+Use fenced code blocks with `mermaid` language:
+
+~~~markdown
+```mermaid
+graph LR
+    A --> B --> C
+```
+~~~
+
+Mermaid JS is loaded only on pages that use diagrams.
+
 ### Page Parameters
 
 ```yaml
@@ -118,6 +141,7 @@ title: "Post Title"
 math: true      # Enable MathJax for this page
 meta: true      # Show author/date metadata
 toc: true       # Show table of contents
+type: book      # Exclude from home page listing
 ---
 ```
 

@@ -1,0 +1,26 @@
+/* Back to top button */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    background: white;
+    font-family: $sans-fonts;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    &:hover {
+        border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+}
