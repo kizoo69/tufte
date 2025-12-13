@@ -28,12 +28,6 @@ a.heading-anchor {
     visibility: collapse;
 }
 
-/* TODO: tufte.scss 원본 복원 후 검토 필요 - 왜 5.5rem으로 오버라이드했는지 불명확
-h2 {
-    margin-top: 5.5rem;
-}
-*/
-
 h2:hover > a.heading-anchor,
 h3:hover > a.heading-anchor {
     display: inline;

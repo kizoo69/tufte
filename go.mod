@@ -1,3 +1,3 @@
-module github.com/loikein/hugo-tufte
+module github.com/kizoo69/tufte
 
-go 1.17
+go 1.21
