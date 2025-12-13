@@ -1,8 +1,8 @@
 ---
 title: "About This Site"
 hasMath: false
-_build:
+build:
   list: never
 ---
 
-This is the example site for [hugo-tufte](https://github.com/loikein/hugo-tufte), a theme for the static site generator [Hugo](https://gohugo.io/).
+This is the example site for [Tufte theme](https://github.com/kizoo69/tufte), a Hugo theme based on Edward Tufte's distinctive typography style.

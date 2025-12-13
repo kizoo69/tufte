@@ -10,7 +10,7 @@ hideDate: true
 hideReadTime: true
 # categories: [tufte-css]
 ---
-Tufte CSS provides tools to style web articles using the ideas demonstrated by Edward Tufte’s books and handouts. Tufte’s style is known for its simplicity, extensive use of sidenotes, tight integration of graphics with text, and carefully chosen typography.{{< marginnote ind="⚠" >}}This demo page is a technical replicate of the original [Tufte CSS](https://edwardtufte.github.io/tufte-css/) page on Edward Tufte's GitHub site. Information may not accurately reflect features of the hugo-tufte theme.{{< /marginnote >}}
+Tufte CSS provides tools to style web articles using the ideas demonstrated by Edward Tufte’s books and handouts. Tufte’s style is known for its simplicity, extensive use of sidenotes, tight integration of graphics with text, and carefully chosen typography.{{< marginnote ind="⚠" >}}This demo page is a technical replicate of the original [Tufte CSS](https://edwardtufte.github.io/tufte-css/) page on Edward Tufte's GitHub site. Information may not accurately reflect features of this theme.{{< /marginnote >}}
 
 Tufte CSS was created by [Dave Liepmann](http://www.daveliepmann.com) and is now an Edward Tufte project. The original idea was cribbed from [Tufte-`$\LaTeX{}$`](https://tufte-latex.github.io/tufte-latex/) and [R Markdown’s Tufte Handout format](http://rmarkdown.rstudio.com/tufte_handout_format.html). We give hearty thanks to all the people who have contributed to those projects.
 

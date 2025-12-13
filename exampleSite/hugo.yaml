@@ -11,8 +11,10 @@ baseurl: "/"
 # The title of your website (shown on all the pages)
 title: "Tufte Theme Example Site"
 canonifyurls: true
-# Number of posts per page on the home page
-paginate: 5
+
+# Pagination settings
+pagination:
+  pagerSize: 5
 
 # Only modify the following if you know what you are doing
 markup:
