@@ -1,64 +1,19 @@
 ---
 author: Totally famous person
-date: '2023-04-16T16:03:45+0100'
+date: '2025-01-01'
 title: The big old test page
 subtitle: Fancy Subtitle
+draft: true
 meta: true
 math: true
 toc: true
 # hideDate: true
 # hideReadTime: true
-categories: [katex, latex, tufte-css]
+categories: [mathjax, latex, tufte-css]
 description: "If the description field is not empty, its contents will show in the home page instead of the first 140 characters of the post."
 ---
 
 ## New features
-
-### Emoji
-
-Powered by [Noto Emoji font](https://emojipedia.org/noto-emoji/).
-
-We really like cats. Yes, they are fluffy and happy. 🐈🐱
-
-🪷🫶🤍😊💀🔥
-
-
-### Button
-
-{{< button
-style="primary"
-icon="✅"
-href="javascript:javascript:(function(){function checkFrames(w) {try {var inputs = w.document.getElementsByTagName('input');for (var i=0; i < inputs.length; i++) {if (inputs[i].type && inputs[i].type == 'checkbox'){inputs[i].checked = true;}}} catch (e){}if(w.frames && w.frames.length>0){for(var i=0;i<w .frames.length;i++){var fr=w.frames[i];checkFrames(fr);}}}checkFrames(window);})()"
->}}
-Open all notes
-{{< /button >}}
-
-{{< button
-style="primary"
-icon="❎"
-href="javascript:javascript:(function(){function checkFrames(w) {try {var inputs = w.document.getElementsByTagName('input');for (var i=0; i < inputs.length; i++) {if (inputs[i].type && inputs[i].type == 'checkbox'){inputs[i].checked = false;}}} catch (e){}if(w.frames && w.frames.length>0){for(var i=0;i<w .frames.length;i++){var fr=w.frames[i];checkFrames(fr);}}}checkFrames(window);})()"
->}}
-Close all notes
-{{< /button >}}
-
-{{< button
-style="primary"
-icon="🔄"
-href="javascript:javascript:(function(){function checkFrames(w) {try {var inputs = w.document.getElementsByTagName('input');for (var i=0; i < inputs.length; i++) {if (inputs[i].type && inputs[i].type == 'checkbox'){inputs[i].checked = !inputs[i].checked;}}} catch (e){}if(w.frames && w.frames.length>0){for(var i=0;i<w .frames.length;i++){var fr=w.frames[i];checkFrames(fr);}}}checkFrames(window);})()"
->}}
-Toggle all notes
-{{< /button >}}
-
-```html
-{{</* button
-style="primary"
-icon="🔄"
-href="javascript:javascript:(function(){function checkFrames(w) {try {var inputs = w.document.getElementsByTagName('input');for (var i=0; i < inputs.length; i++) {if (inputs[i].type && inputs[i].type == 'checkbox'){inputs[i].checked = !inputs[i].checked;}}} catch (e){}if(w.frames && w.frames.length>0){for(var i=0;i<w .frames.length;i++){var fr=w.frames[i];checkFrames(fr);}}}checkFrames(window);})()"
-*/>}}
-Toggle all notes
-{{</* /button */>}}
-```
-
 
 ### Cols (with `lang` option)
 
@@ -83,17 +38,6 @@ But sometimes you just have to get your hands dirty.{{</* sidenote */>}}Good num
 読めないのか？私は大丈夫だが。
 {{</* /cols */>}}
 ```
-
-
-### YouTube-nocookie
-
-Never again click things in the video accidentally and it opens YouTube. Oh no.
-
-{{< youtube id="YslQ2625TR4" title="iPhone Resolution by Edward Tufte" >}}
-
-```html
-{{</* youtube id="YslQ2625TR4" title="iPhone Resolution by Edward Tufte" */>}}
-````
 
 
 ## Tufte features
@@ -122,7 +66,7 @@ to start the beginning of a section.
 
 Some blockquotes.  But first, we try to manually cite via
 
-<cite>This is between cite tags and has math: `$e^x $`</cite> {{< sidenote >}}Only use `$\KaTeX{}$`, you must.{{< /sidenote >}}
+<cite>This is between cite tags and has math: `$e^x $`</cite> {{< sidenote >}}This theme uses MathJax 3 for math rendering.{{< /sidenote >}}
 
 {{< blockquote author="Shawn O'Hare" cite="www.shawnohare.com" >}}
 This is a blockquote with two paragraphs, that employs the
@@ -348,3 +292,32 @@ ref: https://burk.io/2020/let-there-be-dark
 | ------------------ | -------------- |
 | Agent 1's action   | `$a_1$`          |
 | New finding        | `$R_1 \begin{cases} >\mu_{2} \\ \leq \mu_{2} \end{cases}$` |
+
+### Inline Math (with/without backticks)
+
+Without backticks: $x^2$, $x_{i}$, $\sum_{i=1}^{n} x_i$
+
+With backticks: `$x^2$`, `$x_{i}$`, `$\sum_{i=1}^{n} x_i$`
+
+Display math:
+
+$$
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+### Nested Blockquotes
+
+> This is the first level of quoting.
+>
+> > This is nested blockquote.
+>
+> Back to the first level.
+
+> ## Blockquote with header
+>
+> 1. First list item.
+> 2. Second list item.
+>
+> ```sh
+> return shell_exec("echo $input | $markdown_script");
+> ```

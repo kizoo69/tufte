@@ -1,39 +1,23 @@
 <!-- Preconnect to critical third-party origins -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
-<!-- Preload critical fonts to start download before CSS parsing -->
-<link rel="preload" href="/fonts/chosun/ChosunGu.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/mona-sans/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
-
-<!-- Google Fonts with font-display: swap for FOUT prevention -->
-<!-- https://csswizardry.com/2020/05/the-fastest-google-fonts/#google-fonts-async-snippet -->
-<link rel="preload" as="style"
-      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+SC:wght@400;700&family=Noto+Emoji&display=swap" />
+<!-- Google Fonts: Lato, Nanum Myeongjo, Spline Sans Mono, Noto CJK (KR, JP, SC, TC) -->
 <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+SC:wght@400;700&family=Noto+Emoji&display=swap"
-      media="print" onload="this.media='all'" />
-<noscript>
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+SC:wght@400;700&family=Noto+Emoji&display=swap" />
-</noscript>
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Spline+Sans+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap" />
 
-{{ $htoptions := (dict "targetPath" "/css/hugo-tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $htstyle := resources.Get "scss/main.scss"| resources.ExecuteAsTemplate "main.scss" .  | css.Sass $htoptions }}
+{{ $options := (dict "targetPath" "/css/tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $style := resources.Get "scss/main.scss"| resources.ExecuteAsTemplate "main.scss" .  | css.Sass $options }}
 
-{{ $ht_o_options := (dict "targetPath" "/css/hugo-tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $ht_o_style := resources.Get "scss/hugo-tufte-options.scss"| resources.ExecuteAsTemplate "main.scss" .  | css.Sass $ht_o_options }}
-
-{{/* Custom site-wide CSS via Hugo asset pipeline with template execution */}}
-{{ $customOptions := (dict "targetPath" "/css/custom.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $customStyle := resources.Get "css/custom.scss" | resources.ExecuteAsTemplate "custom.scss" . | css.Sass $customOptions }}
-
-<!-- Preload CSS to start download early -->
-<link rel="preload" href="{{ $htstyle.Permalink | relURL }}" as="style">
-<link rel="preload" href="{{ $ht_o_style.Permalink | relURL }}" as="style">
+{{ $optOptions := (dict "targetPath" "/css/tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{ $optStyle := resources.Get "scss/tufte-options.scss"| resources.ExecuteAsTemplate "tufte-options.scss" .  | css.Sass $optOptions }}
 
 <!-- Load stylesheets -->
-<link rel="stylesheet" href="{{ $htstyle.Permalink | relURL }}">
-<link rel="stylesheet" href="{{ $ht_o_style.Permalink | relURL }}">
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
+<link rel="stylesheet" href="{{ $optStyle.Permalink | relURL }}">
+{{- with resources.Get "css/custom.scss" }}
+{{- $customOptions := (dict "targetPath" "/css/custom.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+{{- $customStyle := . | resources.ExecuteAsTemplate "custom.scss" $ | css.Sass $customOptions }}
 <link rel="stylesheet" href="{{ $customStyle.Permalink | relURL }}">
+{{- end }}

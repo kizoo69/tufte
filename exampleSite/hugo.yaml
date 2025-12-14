@@ -42,16 +42,30 @@ params:
   showSummary: true
   # Site wide kill switch for MathJax support
   math: true
-  # Use upright & sans-serif font for subtitles
-  sansSubtitle: false
-  # Make the page centred in screen
-  centerArticle: false
 
 taxonomies:
   category: categories
   series: series
   tag: tags
 
+mermaid:
+  theme: neutral
+  themeCSS: |
+    * {
+      font-family: et-book, "Nanum Myeongjo", "Noto Serif KR", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif !important;
+    }
+    * {
+      text-align: center !important;
+      max-width: 80% !important;
+      text-wrap: normal !important;
+    }
+    .clickable .nodeLabel {
+      text-decoration: underline !important;
+    }
+    .edgeLabel {
+      background-color: trasparent !important;
+      fill: none !important;
+    }
 # -----------------------------------------------------------------------
 # Navigation menu
 # -----------------------------------------------------------------------

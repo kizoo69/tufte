@@ -1,8 +1,10 @@
-/* Import custom fonts */
+/* Import custom fonts (non-Google Fonts only) */
 @import "ETBook";
+@import "ChosunGulim";
 
-$serif-fonts: et-book, "Noto Serif KR", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif, "Noto Emoji";
-$sans-fonts: "Gill Sans", "Gill Sans MT", Calibri, sans-serif, "Noto Emoji";
-$mono-fonts: Consolas, "Liberation Mono", Menlo, Courier, monospace, "Noto Emoji";
+/* CJK fallback order: KR, JP, SC, TC */
+$serif-fonts: et-book, "Nanum Myeongjo", "Noto Serif KR", "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+$sans-fonts: Lato, "Chosun Gulim", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Noto Sans TC", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+$mono-fonts: "Spline Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
 @import "options";

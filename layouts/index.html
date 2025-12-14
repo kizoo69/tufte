@@ -7,11 +7,28 @@
   </section>
 {{ end }}
 <section class="posts">
-{{/* Filter: non-draft, has date, not type:book */}}
-{{ $pages := where .Site.RegularPages "Draft" false }}
-{{ $pages = where $pages "Params.date" "!=" nil }}
-{{ $pages = where $pages "Params.type" "!=" "book" }}
-{{ range (.Paginate $pages).Pages }}
+{{/* Filter pages to only show those from sections WITHOUT type: book */}}
+{{ $nonBookPages := slice }}
+{{ range .Site.RegularPages }}
+  {{ $isBookSection := false }}
+  {{/* Check if page or its parent section has type: book */}}
+  {{ if eq .Params.type "book" }}
+    {{ $isBookSection = true }}
+  {{ else if .CurrentSection }}
+    {{ if eq .CurrentSection.Params.type "book" }}
+      {{ $isBookSection = true }}
+    {{ end }}
+  {{ end }}
+  {{ if not $isBookSection }}
+    {{ $nonBookPages = $nonBookPages | append . }}
+  {{ end }}
+{{ end }}
+
+{{/* Sort by date descending and paginate */}}
+{{ $sorted := sort $nonBookPages "Date" "desc" }}
+{{ $paginator := .Paginate $sorted }}
+
+{{ range $paginator.Pages }}
   <h2>
   {{ if .IsNode }}
   <a href="{{ .Permalink }}">{{ .Title}}</a>

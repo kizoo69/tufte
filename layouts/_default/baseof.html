@@ -26,6 +26,57 @@
   </script>
 {{ end }}
 
+<!-- Menu toggle -->
+<button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
+<nav id="menu-panel" class="floating-panel" aria-label="Site navigation">
+  <ul>
+    {{- range .Site.Menus.nav }}
+    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+    {{- end }}
+  </ul>
+</nav>
+
+<!-- TOC toggle -->
+{{ if .TableOfContents | findRE "<li>" }}
+<button id="toc-toggle" class="floating-toggle" aria-label="Table of contents" aria-expanded="false"></button>
+<nav id="toc-panel" class="floating-panel" aria-label="Table of contents">
+  {{ .TableOfContents }}
+</nav>
+{{ end }}
+
+<script>
+(function() {
+  function setupPanel(toggleId, panelId) {
+    var btn = document.getElementById(toggleId);
+    var panel = document.getElementById(panelId);
+    if (!btn || !panel) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var expanded = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', expanded);
+    });
+    panel.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  setupPanel('menu-toggle', 'menu-panel');
+  setupPanel('toc-toggle', 'toc-panel');
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.floating-panel.open').forEach(function(panel) {
+      var toggleId = panel.id.replace('-panel', '-toggle');
+      var btn = document.getElementById(toggleId);
+      if (!panel.contains(e.target) && e.target !== btn) {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+})();
+</script>
+
 <!-- Back to top button -->
 <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">^</button>
 <script>

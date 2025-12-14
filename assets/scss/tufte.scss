@@ -8,26 +8,6 @@
 @import "fonts/variables";
 
 /* Tufte CSS styles */
-/*
- * Responsive font-size: Mobile-first progressive enhancement
- *
- * 원본 Tufte CSS (edwardtufte/tufte-css)는 고정 15px을 사용하여
- * 반응형 디자인이 없었습니다. 이는 2015년경 작성된 것으로
- * 모던 웹 디자인 표준이 확립되기 이전입니다.
- *
- * Jekyll Tufte 테마 (clayh53/tufte-jekyll)는 이를 개선하여
- * 화면 크기에 따라 11px~17px로 점진적으로 증가하는
- * mobile-first 방식을 적용했습니다.
- *
- * 이 Hugo 테마는 원본을 충실히 포팅했으나, UX 개선을 위해
- * Jekyll 버전의 반응형 접근을 채택합니다.
- *
- * 변경 이력:
- * - 2025-10-10: Jekyll 방식 반응형 font-size 적용
- * - 참고: content/log/2025-10-10-tufte-responsive-font.md
- */
-
-/* Tufte CSS styles */
 html {
     font-size: 15px;
 }

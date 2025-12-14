@@ -154,6 +154,23 @@ type: book      # Exclude from home page listing
 
 See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for examples.
 
+## TODO
+
+### Font & Accessibility
+- [ ] Accessible font sizing (avoid base font-size, use relative units) - ref: [CSS-Tricks](https://css-tricks.com/accessible-font-sizing-explained/#aa-avoid-setting-a-base-font-size)
+- [ ] Conditional CJK font loading (skip if not needed)
+- [ ] Sans-fonts testing and configuration
+
+### Features
+- [ ] Details shortcode improvements
+- [ ] Epigraph nowrap handling
+- [ ] Mermaid diagram enhancements
+- [ ] Dark/light theme toggle
+
+### Cleanup
+- [ ] exampleSite content review and cleanup
+- [ ] Remove unused files and outdated examples
+
 ## License
 
 MIT
