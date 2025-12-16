@@ -1,11 +1,11 @@
 ---
 title: "Mermaid Diagram Examples"
 date: 2025-12-13
-draft: true
+draft: false
 tags: [mermaid, test]
 ---
 
-Mermaid 다이어그램 렌더링 테스트.
+Mermaid diagram examples to test out the shortcode. {{< marginnote >}}Examples adapted from [Mermaid.js official documentation](https://mermaid.js.org/syntax/examples.html).{{< /marginnote >}}
 
 ## Pie Charts
 

@@ -10,6 +10,7 @@ hasCJKLanguage: true
 baseurl: "/"
 # The title of your website (shown on all the pages)
 title: "Tufte Theme Example Site"
+author: "Kim, Jaewoo"
 canonifyurls: true
 
 # Pagination settings

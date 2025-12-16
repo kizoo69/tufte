@@ -3,7 +3,7 @@ author: Totally famous person
 date: '2025-01-01'
 title: The big old test page
 subtitle: Fancy Subtitle
-draft: true
+draft: false
 meta: true
 math: true
 toc: true
@@ -39,6 +39,21 @@ But sometimes you just have to get your hands dirty.{{</* sidenote */>}}Good num
 {{</* /cols */>}}
 ```
 
+
+### Details
+
+{{< details summary="Click to expand" >}}
+This content is hidden by default. You can include any markdown here.
+
+- List item 1
+- List item 2
+{{< /details >}}
+
+```html
+{{</* details summary="Click to expand" */>}}
+Hidden content here.
+{{</* /details */>}}
+```
 
 ## Tufte features
 
@@ -282,6 +297,13 @@ ref: https://burk.io/2020/let-there-be-dark
 
 <div title="#f8f8f2" style="height: 50px; width: 100px; background-color: #f8f8f2; margin-right: 5px; display: inline-block; border-style: solid; border-color: black; color:black; padding:10px;">#f8f8f2</div>
 
+### Table Alignment
+
+| Left |  Center  | Right |
+|:-----|:--------:|------:|
+| L    | C        | $1600 |
+| L    | C        |   $12 |
+
 ### LaTeX & Table
 
 `$\LaTeX{}$`
@@ -303,6 +325,12 @@ Display math:
 
 $$
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+$$
+
+Matrix:
+
+$$ 
+\begin{bmatrix} \alpha & \beta^{*} \\ \gamma^{*} & \delta \end{bmatrix}
 $$
 
 ### Nested Blockquotes

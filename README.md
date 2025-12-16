@@ -166,10 +166,14 @@ See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for example
 - [ ] Epigraph nowrap handling
 - [ ] Mermaid diagram enhancements
 - [ ] Dark/light theme toggle
+- [ ] MathJax: LaTeX environments require backticks - see [ISSUE-mathjax-backticks.md](ISSUE-mathjax-backticks.md)
 
-### Cleanup
-- [ ] exampleSite content review and cleanup
-- [ ] Remove unused files and outdated examples
+### Shortcode documentation
+- [ ] cite shortcode demo/docs
+- [ ] div shortcode demo/docs
+- [ ] section shortcode demo/docs
+- [ ] tag shortcode demo/docs
+- [ ] youtube shortcode - loikein version not working, needs investigation
 
 ## License
 

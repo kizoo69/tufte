@@ -3,7 +3,7 @@ author: Dave Liepmann
 date: '2023-04-17T16:03:45+0100'
 title: Tufte CSS
 # subtitle: A CSS library for creating beautiful Tufte-inspired HTML documents.
-draft: true
+draft: false
 meta: true
 math: true
 toc: false
