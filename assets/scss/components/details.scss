@@ -4,16 +4,19 @@ details {
 }
 
 details[open] {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0.5em;
+    border: none;
+// border: 1px solid rgba(0, 0, 0, 0.1);
+// padding: 0.5em;
 }
 
 details summary {
     vertical-align: top;
     padding: .3em .5em;
-    font-family: $sans-fonts;
+    // font-family: $sans-fonts;
 }
 
 details summary:focus:not(:focus-visible) {
     outline: none;
 }
+
+

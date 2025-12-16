@@ -217,6 +217,22 @@ mjx-container[jax="CHTML"][display="true"],
 /* Styling for i18n. */
 /* ------------------------------------------------------------------------ */
 
+body:lang(ko)
+{
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
+    font-synthesis-small-caps: none;
+}
+
+h2:lang(ko), 
+h3:lang(ko), 
+p.subtitle:lang(ko), 
+div.epigraph>blockquote:lang(ko),
+div.epigraph>blockquote>footer>cite:lang(ko) 
+{
+    font-style: normal;
+}
+
 /* Hyphenation: enabled for Latin scripts, disabled for CJK */
 p {
     hyphens: auto;
@@ -235,7 +251,7 @@ p:lang(ja) {
 /* reduce zh & ja font-size to match en */
 p:lang(zh), span:lang(zh),
 p:lang(ja), span:lang(ja) {
-    font-size: 1.2rem;
+    font-size: 1.2rem; // 1.4rem for latin - See tufte.css
 }
 
 .sidenote:lang(zh),
@@ -248,10 +264,4 @@ p:lang(ja), span:lang(ja) {
     font-size: 0.9rem;
 }
 
-body:lang(ko),
-body:lang(ja),
-body:lang(zh) {
-    font-synthesis-weight: none;
-    font-synthesis-style: none;
-    font-synthesis-small-caps: none;
-}
+

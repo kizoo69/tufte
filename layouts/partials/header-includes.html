@@ -3,9 +3,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
-<!-- Google Fonts: Lato, Nanum Myeongjo, Spline Sans Mono, Noto CJK (KR, JP, SC, TC) -->
+<!-- Google Fonts: Lato, Spline Sans Mono, Noto CJK (KR, JP, SC, TC) -->
 <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Spline+Sans+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Spline+Sans+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap" />
 
 {{ $options := (dict "targetPath" "/css/tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
 {{ $style := resources.Get "scss/main.scss"| resources.ExecuteAsTemplate "main.scss" .  | css.Sass $options }}
