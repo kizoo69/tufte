@@ -219,18 +219,19 @@ mjx-container[jax="CHTML"][display="true"],
 
 body:lang(ko)
 {
-    font-synthesis-weight: none;
+    font-synthesis-weight: auto;
     font-synthesis-style: none;
-    font-synthesis-small-caps: none;
+    font-synthesis-small-caps: auto;
 }
 
 h2:lang(ko), 
 h3:lang(ko), 
 p.subtitle:lang(ko), 
 div.epigraph>blockquote:lang(ko),
-div.epigraph>blockquote>footer>cite:lang(ko) 
+div.epigraph>blockquote>footer>cite:lang(ko)
 {
     font-style: normal;
+    font-family: $sans-fonts;
 }
 
 /* Hyphenation: enabled for Latin scripts, disabled for CJK */

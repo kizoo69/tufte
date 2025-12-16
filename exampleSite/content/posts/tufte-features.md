@@ -19,7 +19,9 @@ description: "If the description field is not empty, its contents will show in t
 
 Certain things do not work with this shortcode layout, for example, Markdown's default footnote (like `[^1]`).
 
-{{< cols "zh-Hans,en,ja" >}}
+{{< cols "ko, zh-Hans,en,ja" >}}
+한글에는 italic이 없죠. {{<marginnote>}}뉜(oblique) 글꼴도 없고 small-caps는 더더욱 없죠.{{</marginnote>}} {{<marginnote ind="ㅎ">}}languageCode가 ko일 때 tufte h2, h3를 italic으로 둘 수 없어서 sans-serif로 바꾼 거에요. {{</marginnote>}}{{<sidenote>}}영어 글꼴은 tufte 추천대로 Gill Sans와 가장 가까운 Lato를 썼는데 썩 마음에 드는 것은 아니에요.{{</sidenote>}}
+||
 我是一个懒人。 {{< marginnote >}}这是一个边注。在屏幕很小的时候，它有一个可以点击展开的按钮。{{< /marginnote >}}{{< marginnote ind="🐱" >}}您可以在 `config.yaml` 中修改全站按钮默认设置，也可以使用 `ind` 选项为每一个边注单独设置按钮。{{< /marginnote>}}{{< marginnote ind="⚠" >}}在这个版本中，我提升了可访问性，但不包括[用不了 `:has` 的火狐](https://caniuse.com/css-has)。{{< /marginnote>}}
 ||
 But sometimes you just have to get your hands dirty.
@@ -30,7 +32,9 @@ This is the joy and the curse of a programmer. {{< sidenote >}}Sidenote numbers 
 {{< /cols >}}
 
 ```html
-{{</* cols "zh-Hans,en,ja" */>}}
+{{</* cols "ko,zh-Hans,en,ja" */>}}
+한글에는 italic이 없죠. 뉜(oblique) 글꼴도 없고 small-caps는 더더욱 없죠.
+||
 我是一个懒人。{{</* marginnote */>}}这是一个边注。{{</* /marginnote */>}}
 ||
 But sometimes you just have to get your hands dirty.{{</* sidenote */>}}Good numbers.{{</* /sidenote */>}}
@@ -107,6 +111,8 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 ### Small-caps
 
 {{< newthought >}}Sometimes a new thought{{< /newthought >}} distinguishes a section, as here.
+
+{{< newthought >}}한글에서{{< /newthought >}} 새 문단을 열 때는 글자가 큰 게 나을지도 모른다.
 
 ```html
 {{</* newthought */>}}Sometimes a new thought{{</* /newthought */>}}
@@ -315,6 +321,21 @@ ref: https://burk.io/2020/let-there-be-dark
 | Agent 1's action   | `$a_1$`          |
 | New finding        | `$R_1 \begin{cases} >\mu_{2} \\ \leq \mu_{2} \end{cases}$` |
 
+### Block Math (with/without backticks)
+
+Without backticks:
+
+$$ 
+\begin{bmatrix} \alpha & \beta^{*} \\ \gamma^{*} & \delta \end{bmatrix}
+$$
+
+With backticks:
+
+`$$ 
+\begin{bmatrix} \alpha & \beta^{*} \\ \gamma^{*} & \delta \end{bmatrix}
+$$`
+
+
 ### Inline Math (with/without backticks)
 
 Without backticks: $x^2$, $x_{i}$, $\sum_{i=1}^{n} x_i$
@@ -325,12 +346,6 @@ Display math:
 
 $$
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
-$$
-
-Matrix:
-
-$$ 
-\begin{bmatrix} \alpha & \beta^{*} \\ \gamma^{*} & \delta \end{bmatrix}
 $$
 
 ### Nested Blockquotes
