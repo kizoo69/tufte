@@ -247,3 +247,11 @@ p:lang(ja), span:lang(ja) {
 .marginnote:lang(ja) {
     font-size: 0.9rem;
 }
+
+body:lang(ko),
+body:lang(ja),
+body:lang(zh) {
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
+    font-synthesis-small-caps: none;
+}
