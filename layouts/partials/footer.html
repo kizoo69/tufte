@@ -1,96 +1,98 @@
 <footer class="page-footer">
-<hr />
+  <hr />
 
-<div class="previous-post" style="display:inline-block;">
-  {{ if .PrevInSection }}
-  <a class="link-reverse" href="{{ .PrevInSection.Permalink }}?ref=footer">« {{ .PrevInSection.Title | truncate 50 "..."}}</a>
-  {{ end }}
-</div>
+  <div class="previous-post" style="display:inline-block;">
+    {{ if .PrevInSection }}
+    <a class="link-reverse" href="{{ .PrevInSection.Permalink }}?ref=footer">« {{ .PrevInSection.Title | truncate 50
+      "..."}}</a>
+    {{ end }}
+  </div>
 
-<div class="next-post", style="display:inline-block;float:right;">
-  {{ if .NextInSection }}
-  <a class="link-reverse" href="{{ .NextInSection.Permalink }}?ref=footer">{{ .NextInSection.Title | truncate 50 "..." }} »</a>
-  {{ end }}
-</div>
+  <div class="next-post" , style="float:right;">
+    {{ if .NextInSection }}
+    <a class="link-reverse" href="{{ .NextInSection.Permalink }}?ref=footer">{{ .NextInSection.Title | truncate 50 "..."
+      }} »</a>
+    {{ end }}
+  </div>
 
-<ul class="page-footer-menu">
-  {{/* SOCIALS */}}
-  {{ if .Site.Params.twitter }}
-  <li><a href="https://twitter.com/{{.Site.Params.twitter}}">Twitter</a></li>
-  {{ end }}
+  <ul class="page-footer-menu">
+    {{/* SOCIALS */}}
+    {{ if .Site.Params.twitter }}
+    <li><a href="https://twitter.com/{{.Site.Params.twitter}}">Twitter</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.linkedin }}
-  <li><a href="https://linkedin.com/in/{{.Site.Params.linkedin}}">LinkedIn</a></li>
-  {{ end }}
+    {{ if .Site.Params.linkedin }}
+    <li><a href="https://linkedin.com/in/{{.Site.Params.linkedin}}">LinkedIn</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.github }}
-  <li><a href="https://github.com/{{.Site.Params.github}}">GitHub</a></li>
-  {{ end }}
+    {{ if .Site.Params.github }}
+    <li><a href="https://github.com/{{.Site.Params.github}}">GitHub</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.gitlab }}
-  <li><a href="https://gitlab.com/{{.Site.Params.gitlab}}">GitLab</a></li>
-  {{ end }}
+    {{ if .Site.Params.gitlab }}
+    <li><a href="https://gitlab.com/{{.Site.Params.gitlab}}">GitLab</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.patreon }}
-  <li><a href="https://www.patreon.com/{{.Site.Params.patreon}}">Patreon</a></li>
-  {{ end }}
+    {{ if .Site.Params.patreon }}
+    <li><a href="https://www.patreon.com/{{.Site.Params.patreon}}">Patreon</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.youtube }}
-  <li><a href="https://www.youtube.com/{{.Site.Params.youtube}}">YouTube</a></li>
-  {{ end }}
+    {{ if .Site.Params.youtube }}
+    <li><a href="https://www.youtube.com/{{.Site.Params.youtube}}">YouTube</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.medium }}
-  <li><a href="https://medium.com/{{.Site.Params.medium}}">Medium</a></li>
-  {{ end }}
+    {{ if .Site.Params.medium }}
+    <li><a href="https://medium.com/{{.Site.Params.medium}}">Medium</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.reddit }}
-  <li><a href="https://www.reddit.com/user/{{.Site.Params.reddit}}">Reddit</a></li>
-  {{ end }}
+    {{ if .Site.Params.reddit }}
+    <li><a href="https://www.reddit.com/user/{{.Site.Params.reddit}}">Reddit</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.stackoverflow }}
-  <li><a href="https://stackoverflow.com/users/{{.Site.Params.stackoverflow}}?tab=profile">StackOverflow</a></li>
-  {{ end }}
+    {{ if .Site.Params.stackoverflow }}
+    <li><a href="https://stackoverflow.com/users/{{.Site.Params.stackoverflow}}?tab=profile">StackOverflow</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.instagram }}
-  <li><a href="https://www.instagram.com/{{.Site.Params.instagram}}">Instagram</a></li>
-  {{ end }}
+    {{ if .Site.Params.instagram }}
+    <li><a href="https://www.instagram.com/{{.Site.Params.instagram}}">Instagram</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.mastodon }}
-  <li><a href="https://{{.Site.Params.mastodon}}">Mastodon</a></li>
-  {{ end }}
+    {{ if .Site.Params.mastodon }}
+    <li><a href="https://{{.Site.Params.mastodon}}">Mastodon</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.orcid }}
-  <li><a href="https://orcid.org/{{.Site.Params.orcid}}">ORCID</a></li>
-  {{ end }}
+    {{ if .Site.Params.orcid }}
+    <li><a href="https://orcid.org/{{.Site.Params.orcid}}">ORCID</a></li>
+    {{ end }}
 
-  {{ if .Site.Params.google_scholar }}
-  <li><a href="https://scholar.google.com/citations?user={{.Site.Params.google_scholar}}">Google Scholar</a></li>
-  {{ end }}
-  {{/* END SOCIALS */}}
-  {{ range .Site.Menus.footer }}
+    {{ if .Site.Params.google_scholar }}
+    <li><a href="https://scholar.google.com/citations?user={{.Site.Params.google_scholar}}">Google Scholar</a></li>
+    {{ end }}
+    {{/* END SOCIALS */}}
+    {{ range .Site.Menus.footer }}
     <li><a href="{{.URL}}">{{.Pre }} {{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+
+  {{ if .Site.Params.showPoweredBy}}
+  <p>
+    Powered by <a href="https://gohugo.io">Hugo</a> and the
+    <a href="https://github.com/kizoo69/tufte">Tufte theme</a>.
+  </p>
   {{ end }}
-</ul>
 
-{{ if .Site.Params.showPoweredBy}}
-<p>
-  Powered by <a href="https://gohugo.io">Hugo</a> and the
-  <a href="https://github.com/kizoo69/tufte">Tufte theme</a>.
-</p>
-{{ end }}
-
-{{ if or .Site.Params.copyright .Site.Params.copyrightHolder }}
-<div class="copyright">
-<p>
-  {{ with .Site.Params.copyright }}
-  {{ . | safeHTML }}
-  {{ else }}
-  &copy; {{now.Format "2006"}}
-  {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
-  All rights reserved.
-  {{end}}
-</p>
-</div>
-{{ end }}
+  {{ if or .Site.Params.copyright .Site.Params.copyrightHolder }}
+  <div class="copyright">
+    <p>
+      {{ with .Site.Params.copyright }}
+      {{ . | safeHTML }}
+      {{ else }}
+      &copy; {{now.Format "2006"}}
+      {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
+      All rights reserved.
+      {{end}}
+    </p>
+  </div>
+  {{ end }}
 
 </footer>
