@@ -28,7 +28,7 @@
 
 <!-- Menu toggle -->
 <button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
-<nav id="menu-panel" class="floating-panel" aria-label="Site navigation">
+<nav id="menu-panel" class="floating-panel" aria-label="Site navigation" data-pagefind-ignore>
   <ul>
     {{- range .Site.Menus.nav }}
     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
@@ -36,10 +36,14 @@
   </ul>
 </nav>
 
+<!-- Search toggle -->
+<button id="search-toggle" class="floating-toggle" aria-label="Search" aria-expanded="false"></button>
+{{ partial "search-modal.html" . }}
+
 <!-- TOC toggle -->
 {{ if .TableOfContents | findRE "<li>" }}
 <button id="toc-toggle" class="floating-toggle" aria-label="Table of contents" aria-expanded="false"></button>
-<nav id="toc-panel" class="floating-panel" aria-label="Table of contents">
+<nav id="toc-panel" class="floating-panel" aria-label="Table of contents" data-pagefind-ignore>
   {{ .TableOfContents }}
 </nav>
 {{ end }}
