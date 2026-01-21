@@ -78,6 +78,7 @@ Switched from KaTeX to MathJax 3 because:
 
 ### Other Improvements
 
+- Client-side search with multi-language support (including CJK) via [FlexSearch](https://github.com/nextapps-de/flexsearch).
 - `.author`, `.date` selectors scoped to `.content-meta` to prevent style leaks
 - Separated blog-specific styles from tufte.scss core
 - Mermaid diagram support (conditional loading)
@@ -132,6 +133,26 @@ graph LR
 ~~~
 
 Mermaid JS is loaded only on pages that use diagrams.
+
+### Search
+
+This theme includes client-side search functionality powered by [FlexSearch](https://github.com/nextapps-de/flexsearch), with support for multi-language content including CJK.
+
+To enable it, add the following to your site configuration:
+
+```yaml
+params:
+  search:
+    enable: true
+    # For CJK language support, FlexSearch requires custom configuration.
+    # 'encode: false' is needed to prevent default encoding from interfering
+    # with CJK tokenization. A custom 'tokenize' function (typically in JavaScript)
+    # is also required to split CJK characters appropriately.
+    # Refer to FlexSearch documentation for detailed CJK setup.
+    encode: false
+```
+
+A search icon will appear in the header. The search index is automatically generated during the build process.
 
 ### Page Parameters
 

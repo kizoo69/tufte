@@ -15,6 +15,7 @@
 @import "components/meta";
 @import "components/listings";
 @import "components/back-to-top";
+@import "components/search";
 
 // Look at this https://gohugo.io/hugo-pipes/resource-from-template/#readout
 {{ if and (isset .Site.Params "codeblocksdark") .Site.Params.codeBlocksDark  }}

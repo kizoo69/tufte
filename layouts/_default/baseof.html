@@ -26,6 +26,9 @@
   </script>
 {{ end }}
 
+<!-- Search -->
+{{ partial "search.html" . }}
+
 <!-- Menu toggle -->
 <button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
 <nav id="menu-panel" class="floating-panel" aria-label="Site navigation">
@@ -87,6 +90,11 @@
   });
 })();
 </script>
+
+<!-- FlexSearch -->
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.min.js"></script>
+{{- $searchJS := resources.Get "js/search.js" | fingerprint -}}
+<script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
 
 </body>
 
