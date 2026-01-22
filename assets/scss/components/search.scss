@@ -1,0 +1,102 @@
+/* Search Toggle */
+#search-toggle {
+    right: 3rem; /* Positions it to the left of the TOC toggle (0.5rem) */
+    @extend .floating-toggle;
+
+    &::before {
+        content: "🔍"; /* Magnifying glass */
+        font-family: sans-serif; /* Ensure emoji/symbol renders consistently */
+        font-style: normal;
+    }
+}
+
+/* Search Modal */
+#search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 248, 0.95); /* Tufte background with opacity */
+    z-index: 200; /* Higher than toggles */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+
+    &.open {
+        display: flex;
+        opacity: 1;
+    }
+
+    .search-container {
+        width: 80%;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+        background: transparent;
+        position: relative;
+        padding: 2rem;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #111;
+        line-height: 1;
+        padding: 0.5rem;
+        z-index: 201;
+
+        &:hover {
+            color: #555;
+        }
+    }
+}
+
+/* Customize Pagefind UI variables for Tufte */
+:root {
+    --pagefind-ui-scale: 0.8;
+    --pagefind-ui-primary: #111;
+    --pagefind-ui-text: #111;
+    --pagefind-ui-background: #fffff8;
+    --pagefind-ui-border: #333;
+    --pagefind-ui-tag: #333;
+    --pagefind-ui-font: "et-book", "Palatino Linotype", "Palatino", "Georgia", "serif";
+}
+
+/* Adjustments for Pagefind inside modal */
+#search {
+    .pagefind-ui__search-input {
+        font-family: var(--pagefind-ui-font);
+        border: 1px solid #111;
+        background-color: transparent;
+        font-size: 1.4rem;
+
+        &:focus {
+            outline: 1px solid #111;
+        }
+    }
+
+    .pagefind-ui__result-link {
+        font-weight: normal;
+        text-decoration: underline;
+        text-underline-offset: 0.1em;
+        text-decoration-thickness: 0.05em;
+    }
+
+    .pagefind-ui__result-excerpt {
+        font-family: var(--pagefind-ui-font);
+        font-size: 1.1rem;
+    }
+
+    mark {
+        background-color: #fffd82; /* Gentle highlighter yellow */
+        color: inherit;
+    }
+}
