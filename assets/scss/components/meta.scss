@@ -1,17 +1,40 @@
 /* Content meta-data such as author, publication date, etc. */
+/* Single line layout (hextra style) */
 .content-meta {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
     font-family: $sans-fonts;
-    font-size: 1.1rem;
-    margin-top: 1em;
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 0.75em;
+    margin-bottom: 1.5em;
+}
+
+.content-meta .meta-left {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
 }
 
 .content-meta .author,
-.content-meta .date {
-    font-size: 1.4rem;
+.content-meta .date,
+.content-meta .readtime {
+    display: inline;
+    font-size: inherit;
     font-weight: 400;
-    margin: 1rem auto 1rem 0;
-    line-height: 1;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.content-meta .separator {
+    margin: 0 0.25em;
+    color: #d1d5db;
+}
+
+.content-meta .readtime {
+    color: #d1d5db;
 }
 
 .post-avatar {

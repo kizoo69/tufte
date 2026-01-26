@@ -7,22 +7,21 @@
 {{- end -}}
 
 {{- if and (.IsPage) (.Params.meta) -}}
-<span class="content-meta">
-  {{- if .Params.author -}}
-  <p class="author">{{ .Params.author }}</p>
-  {{- end -}}
-
-  {{- if not .Params.hidedate -}}
-  <p class="date">{{ .Date.Format "2006-01-02" }}</p>
-  {{- end -}}
-
+<div class="content-meta">
+  <span class="meta-left">
+    {{- if not .Params.hidedate -}}
+    <span class="date">{{ .Date.Format "2006-01-02" }}</span>
+    {{- end -}}
+    {{- if and (not .Params.hidedate) .Params.author -}}
+    <span class="separator">·</span>
+    {{- end -}}
+    {{- if .Params.author -}}
+    <span class="author">{{ .Params.author }}</span>
+    {{- end -}}
+  </span>
   {{- if not .Params.hidereadtime -}}
-  <span>{{ .ReadingTime }} min read&nbsp;</span>
+  <span class="readtime">{{ .ReadingTime }} min read</span>
   {{- end -}}
-
-  {{- range .Params.tags -}}
-  <a href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>&nbsp;
-  {{- end -}}
-</span>
+</div>
 {{- end -}}
 </section>
