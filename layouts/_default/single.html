@@ -8,6 +8,7 @@
 <article id="main">
   {{ partial "content.header.html" . }}
   <section>{{ .Content }}</section>
+  {{ partial "lastmod.html" . }}
   <section>{{ partial "footer.html" . }}</section>
 </article>
 {{ end }}

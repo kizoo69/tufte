@@ -9,7 +9,7 @@
 /* ------------------------------------------------------------------------ */
 /* Enable ligatures (fi, fl, etc.) and improved kerning */
 :root {
-      text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 
 :focus {
@@ -19,30 +19,30 @@
 }
 
 ::selection {
-    color: #fffff8;
-    background-color: #404040;
+  color: #fffff8;
+  background-color: #404040;
 }
 
 a.heading-anchor {
-    display: none;
-    visibility: collapse;
+  display: none;
+  visibility: collapse;
 }
 
-h2:hover > a.heading-anchor,
-h3:hover > a.heading-anchor {
-    display: inline;
-    visibility: visible;
+h2:hover>a.heading-anchor,
+h3:hover>a.heading-anchor {
+  display: inline;
+  visibility: visible;
 }
 
 hr {
-    text-align: left;
-    margin-left: 0;
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    width: 75%;
-    max-width: 45rem;
-    border-style: solid none none none;
-    border-color: #111;
+  text-align: left;
+  margin-left: 0;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+  width: 75%;
+  max-width: 45rem;
+  border-style: solid none none none;
+  border-color: #111;
 }
 
 kbd {
@@ -53,15 +53,16 @@ kbd {
 }
 
 mark {
-    background: #f0d9bb;
+  background: #f0d9bb;
 }
 
 table:not(.lntable) {
-    margin-top: 1.4em;
-    font-size: 1.4rem;
-    width: auto; /* making booktabs style tables the unstyled default in case someone uses Markdown styling */
-    /* margin: 0 auto; */
-    /* border-spacing: 0px; */
+  margin-top: 1.4em;
+  font-size: 1.4rem;
+  width: auto;
+  /* making booktabs style tables the unstyled default in case someone uses Markdown styling */
+  /* margin: 0 auto; */
+  /* border-spacing: 0px; */
 }
 
 table:not(.lntable) tr th {
@@ -71,40 +72,41 @@ table:not(.lntable) tr th {
 
 table:not(.lntable) tr th,
 table:not(.lntable) tr td {
-    padding-right: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 table.lntable {
-    td.lntd {
-        padding: 0em;
-    }
-    border-spacing: 0;
-    padding: 0;
+  td.lntd {
+    padding: 0em;
+  }
+
+  border-spacing: 0;
+  padding: 0;
 }
 
 /* ------------------------------------------------------------------------ */
 /* Styling for footnotes. */
 /* ------------------------------------------------------------------------ */
 .footnotes hr {
-    margin-top: 4.4em;
+  margin-top: 4.4em;
 }
 
 .footnotes ol {
-    width: 55%;
-    margin-top: 4.4rem;
+  width: 55%;
+  margin-top: 4.4rem;
 
-    li {
-        p {
-            width: 100%;
-            margin: 0;
-            padding: 0;
+  li {
+    p {
+      width: 100%;
+      margin: 0;
+      padding: 0;
 
-            a.footnote-backref {
-                font-size: 1.2rem;
-                text-decoration: none;
-            }
-        }
+      a.footnote-backref {
+        font-size: 1.2rem;
+        text-decoration: none;
+      }
     }
+  }
 }
 
 /* ------------------------------------------------------------------------ */
@@ -118,9 +120,9 @@ table.lntable {
 
 mjx-container[jax="CHTML"][display="true"],
 .katex-display {
-      overflow: auto;
-      overflow-y: hidden;
-/*     -ms-overflow-style: none;
+  overflow: auto;
+  overflow-y: hidden;
+  /*     -ms-overflow-style: none;
     scrollbar-width: none; */
 }
 
@@ -130,18 +132,19 @@ mjx-container[jax="CHTML"][display="true"],
 /* ------------------------------------------------------------------------ */
 .marginnote .marginnote-ind,
 .sidenote .sidenote-number {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 /* prevent over-crowding */
 
-.sidenote, .marginnote {
-    margin-bottom: 1rem;
+.sidenote,
+.marginnote {
+  margin-bottom: 1rem;
 }
 
 .sidenote code,
 .marginnote code {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -164,15 +167,16 @@ mjx-container[jax="CHTML"][display="true"],
   margin-left: 2rem;
 }
 
-.row .column > p:first-child {
+.row .column>p:first-child {
   margin-top: 0;
 }
 
-.row .column > p:last-child {
+.row .column>p:last-child {
   margin-bottom: 0;
 }
 
 @media (min-width: 760px) {
+
   /* desktop */
   /* https://stackoverflow.com/a/62086985 */
   .row {
@@ -183,26 +187,27 @@ mjx-container[jax="CHTML"][display="true"],
     gap: 1.4rem;
     margin: 0 0 1.4rem 0;
   }
+
   .row .column {
     margin-left: 0 !important;
   }
 }
 
-.column > p {
+.column>p {
   width: 100%;
 }
 
-.column > p > label.margin-toggle.marginnote-ind {
+.column>p>label.margin-toggle.marginnote-ind {
   display: inline;
 }
 
-.column > p > .sidenote,
-.column > p > .marginnote {
+.column>p>.sidenote,
+.column>p>.marginnote {
   display: none;
 }
 
-.column > p > .margin-toggle:checked + .sidenote,
-.column > p > .margin-toggle:checked + .marginnote {
+.column>p>.margin-toggle:checked+.sidenote,
+.column>p>.margin-toggle:checked+.marginnote {
   display: block;
   float: left;
   left: 1rem;
@@ -217,52 +222,65 @@ mjx-container[jax="CHTML"][display="true"],
 /* Styling for i18n. */
 /* ------------------------------------------------------------------------ */
 
-body:lang(ko)
-{
-    font-synthesis-weight: auto;
-    font-synthesis-style: none;
-    font-synthesis-small-caps: auto;
+body:lang(ko) {
+  font-synthesis-weight: auto;
+  font-synthesis-style: none;
+  font-synthesis-small-caps: auto;
 }
 
-h2:lang(ko), 
-h3:lang(ko), 
-p.subtitle:lang(ko), 
-div.epigraph>blockquote:lang(ko),
-div.epigraph>blockquote>footer>cite:lang(ko)
-{
+h2:lang(ko),
+h3:lang(ko) {
+  /*
+    Leave this to
+    specify proper font settings for headings and other elements:
+
     font-style: normal;
-    font-family: $sans-fonts;
+  */
+}
+
+p.subtitle:lang(ko) {
+  /*
+    Leave this to
+    specify proper font settings for headings and other elements:
+
+    font-style: normal;
+  */
+}
+
+div.epigraph>blockquote:lang(ko),
+div.epigraph>blockquote>footer>cite:lang(ko),
+blockquote:lang(ko) {
+  color: #888787;
 }
 
 /* Hyphenation: enabled for Latin scripts, disabled for CJK */
 p {
-    hyphens: auto;
-    -webkit-hyphenate-limit-before: 3;
-    -webkit-hyphenate-limit-after: 4;
-    -ms-hyphenate-limit-chars: 10 3 4;
-    hyphenate-limit-chars: 10 3 4;
+  hyphens: auto;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 4;
+  -ms-hyphenate-limit-chars: 10 3 4;
+  hyphenate-limit-chars: 10 3 4;
 }
 
-p:lang(ko),
-p:lang(zh),
-p:lang(ja) {
-    hyphens: none;
+p:lang(ko) {
+  hyphens: none;
+  text-align: justify;
 }
 
 /* reduce zh & ja font-size to match en */
-p:lang(zh), span:lang(zh),
-p:lang(ja), span:lang(ja) {
-    font-size: 1.2rem; // 1.4rem for latin - See tufte.css
+p:lang(zh),
+span:lang(zh),
+p:lang(ja),
+span:lang(ja) {
+  font-size: 1.2rem; // 1.4rem for latin - See tufte.css
 }
 
 .sidenote:lang(zh),
 .marginnote:lang(zh) {
-    font-size: 0.5rem;
+  font-size: 0.5rem;
 }
 
 .sidenote:lang(ja),
 .marginnote:lang(ja) {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
-
-

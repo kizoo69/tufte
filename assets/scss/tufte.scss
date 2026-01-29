@@ -61,7 +61,7 @@ p.subtitle {
 }
 
 .numeral {
-    font-family: et-book-roman-old-style;
+    font-family: et-book-roman-old-style, serif;
 }
 
 .danger {
@@ -130,9 +130,9 @@ blockquote footer {
 }
 
 /* 50 + 5 == 55, to be the same width as paragraph */
-section > dl,
-section > ol,
-section > ul {
+section>dl,
+section>ol,
+section>ul {
     width: 50%;
     -webkit-padding-start: 5%;
 }
@@ -145,8 +145,8 @@ li:not(:first-child) {
 figure {
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
+    font-size: 100%;
     vertical-align: baseline;
     max-width: 55%;
     -webkit-margin-start: 0;
@@ -273,19 +273,19 @@ div.table-wrapper {
     }
 
     hr,
-    section > p,
-    section > footer,
-    section > table {
+    section>p,
+    section>footer,
+    section>table {
         width: 100%;
     }
 
-    pre > code {
+    pre>code {
         width: 97%;
     }
 
-    section > dl,
-    section > ol,
-    section > ul {
+    section>dl,
+    section>ol,
+    section>ul {
         width: 90%;
     }
 
@@ -322,13 +322,13 @@ div.table-wrapper {
 code,
 .code,
 kbd,
-pre > code {
+pre>code {
     font-family: $mono-fonts;
     font-size: 1.0rem;
     line-height: 1.42;
 }
 
-.sans > code {
+.sans>code {
     font-size: 1.2rem;
 }
 
@@ -343,7 +343,7 @@ h3 .code {
     font-size: 1rem;
 }
 
-pre > code {
+pre>code {
     font-size: 0.9rem;
     width: 52.5%;
     margin-left: 2.5%;
@@ -351,7 +351,7 @@ pre > code {
     display: block;
 }
 
-pre.fullwidth > code {
+pre.fullwidth>code {
     width: 90%;
 }
 
@@ -428,15 +428,14 @@ label.margin-toggle:not(.sidenote-number) {
         display: none;
     }
 
-    .margin-toggle:checked + .sidenote,
-    .margin-toggle:checked + .marginnote {
+    .margin-toggle:checked+.sidenote,
+    .margin-toggle:checked+.marginnote {
         display: block;
         float: left;
         left: 1rem;
         clear: both;
         width: 95%;
         margin: 1rem 2.5%;
-        vertical-align: baseline;
         position: relative;
     }
 
@@ -454,7 +453,6 @@ label.margin-toggle:not(.sidenote-number) {
         margin-bottom: 0.5rem;
         margin-left: 1%;
         margin-right: 1%;
-        vertical-align: baseline;
         position: relative;
     }
 
