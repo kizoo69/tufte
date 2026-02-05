@@ -249,6 +249,8 @@ label.marginnote-ind {
 p,
 footer,
 table,
+details,
+div.table-wrapper,
 div.table-wrapper-small,
 div.supertable-wrapper>p,
 div.booktabs-wrapper {
@@ -260,9 +262,22 @@ table.fullwidth {
     width: 100%;
 }
 
+details {
+    width: 55%;
+
+    p,
+    table,
+    div.table-wrapper {
+        width: 100%;
+    }
+}
+
 div.table-wrapper {
     overflow-x: auto;
-    font-family: $sans-fonts;
+
+    table {
+        width: 100%;
+    }
 }
 
 @media (max-width: 760px) {
@@ -275,7 +290,8 @@ div.table-wrapper {
     hr,
     section>p,
     section>footer,
-    section>table {
+    section>table,
+    section>details {
         width: 100%;
     }
 

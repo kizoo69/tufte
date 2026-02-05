@@ -1,6 +1,11 @@
 /* Import custom fonts (non-Google Fonts only) */
 @import "ETBook";
 
+/* Just empty variables to be overridden */
+$serif-fonts-options: "";
+$sans-fonts-options: "";
+$mono-fonts-options: "";
+/* Override $*_fonts-options variables if needed */
 @import "options";
 
 /* CJK fallback order: KR, JP, SC, TC */

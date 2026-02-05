@@ -84,6 +84,8 @@ Switched from KaTeX to MathJax 3 because:
 - Mermaid diagram support (conditional loading)
 - Back-to-top button (appears on scroll)
 - Home page filters out `type: book` pages
+- **Table Layout Fix**: Added a table render hook to wrap Markdown tables in a scrollable container (`.table-wrapper`), preventing overlap with margin notes on narrow screens.
+- **Details Layout Fix**: Improved `details` tag styling to respect the 55% content width and fixed double-shrinking of nested elements.
 
 ## Installation
 
@@ -172,7 +174,7 @@ type: book      # Exclude from home page listing
 - `marginnote` - Unnumbered margin notes
 - `epigraph` - Opening quotations
 - `blockquote` - Block quotations with attribution
-
+- `cols` - Multi-column layout (with `lang` option for language-specific content)
 See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for examples.
 
 ## TODO
@@ -183,7 +185,7 @@ See [tufte-features.md](exampleSite/content/posts/tufte-features.md) for example
 - [ ] Sans-fonts testing and configuration
 
 ### Features
-- [ ] Details shortcode improvements
+- [x] Details shortcode improvements (layout and width fixes)
 - [ ] Epigraph nowrap handling
 - [ ] Mermaid diagram enhancements
 - [ ] Dark/light theme toggle
