@@ -226,31 +226,33 @@ body:lang(ko) {
   font-synthesis-weight: auto;
   font-synthesis-style: none;
   font-synthesis-small-caps: auto;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; // more crisp
 }
+
+/*
+Headings and subtitles in Korean:
+Leave this to
+    specify proper font settings for headings and other elements:
 
 h2:lang(ko),
 h3:lang(ko) {
-  /*
-    Leave this to
-    specify proper font settings for headings and other elements:
-
-    font-style: normal;
-  */
 }
-
 p.subtitle:lang(ko) {
-  /*
-    Leave this to
-    specify proper font settings for headings and other elements:
-
-    font-style: normal;
-  */
 }
+*/
 
 div.epigraph>blockquote:lang(ko),
 div.epigraph>blockquote>footer>cite:lang(ko),
 blockquote:lang(ko) {
   color: #888787;
+}
+
+/* tunings for more readable Korean text */
+p:lang(ko) {
+  line-height: 1.85;
+  letter-spacing: -0.02em;
 }
 
 /* Hyphenation: enabled for Latin scripts, disabled for CJK */
@@ -262,9 +264,12 @@ p {
   hyphenate-limit-chars: 10 3 4;
 }
 
+.sidenote:lang(ko),
+.marginnote:lang(ko),
 p:lang(ko) {
   hyphens: none;
   text-align: justify;
+  word-break: keep-all;
 }
 
 /* reduce zh & ja font-size to match en */

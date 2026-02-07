@@ -16,6 +16,9 @@
     <span class="separator">·</span>
     {{- end -}}
     {{- if .Params.author -}}
+    {{- if .Site.Params.avatar -}}
+    <img src="{{ .Site.Params.avatar | relURL }}" class="post-avatar" width="32" height="32" alt="avatar">
+    {{- end -}}
     <span class="author">{{ .Params.author }}</span>
     {{- end -}}
   </span>
