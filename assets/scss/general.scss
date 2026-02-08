@@ -56,6 +56,39 @@ mark {
   background: #f0d9bb;
 }
 
+/* ------------------------------------------------------------------------ */
+/* Styling for details/summary (HTML5 element, not in original Tufte CSS)   */
+/* ------------------------------------------------------------------------ */
+details {
+  width: 55%;
+  border-radius: 5px;
+
+  p,
+  table,
+  div.table-wrapper {
+    width: 100%;
+  }
+}
+
+details[open] {
+  border: none;
+}
+
+details summary {
+  vertical-align: top;
+  padding: .3em .5em;
+}
+
+details summary:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (max-width: 760px) {
+  section>details {
+    width: 100%;
+  }
+}
+
 table:not(.lntable) {
   margin-top: 1.4em;
   font-size: 1.4rem;

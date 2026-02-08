@@ -249,7 +249,6 @@ label.marginnote-ind {
 p,
 footer,
 table,
-details,
 div.table-wrapper,
 div.table-wrapper-small,
 div.supertable-wrapper>p,
@@ -260,16 +259,6 @@ div.booktabs-wrapper {
 div.fullwidth,
 table.fullwidth {
     width: 100%;
-}
-
-details {
-    width: 55%;
-
-    p,
-    table,
-    div.table-wrapper {
-        width: 100%;
-    }
 }
 
 div.table-wrapper {
@@ -290,8 +279,7 @@ div.table-wrapper {
     hr,
     section>p,
     section>footer,
-    section>table,
-    section>details {
+    section>table {
         width: 100%;
     }
 
