@@ -9,6 +9,6 @@ $mono-fonts-options: "";
 @import "options";
 
 /* CJK fallback order: KR, JP, SC, TC */
-$serif-fonts: $serif-fonts-options, et-book, "Noto Serif KR", "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-$sans-fonts: $sans-fonts-options, Lato, "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Noto Sans TC", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-$mono-fonts: $mono-fonts-options, "Spline Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+$serif-fonts: $serif-fonts-options, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, "Noto Serif KR", "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", serif;
+$sans-fonts: $sans-fonts-options, Lato, "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Noto Sans TC", sans-serif;
+$mono-fonts: $mono-fonts-options, "Spline Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, "Noto Sans KR", monospace;
