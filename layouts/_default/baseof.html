@@ -27,7 +27,9 @@
 {{ end }}
 
 <!-- Search -->
+{{ if .Site.Params.search.enable }}
 {{ partial "search.html" . }}
+{{ end }}
 
 <!-- Menu toggle -->
 <button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
@@ -91,10 +93,11 @@
 })();
 </script>
 
-<!-- FlexSearch -->
+{{ if .Site.Params.search.enable }}
 <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.min.js"></script>
 {{- $searchJS := resources.Get "js/search.js" | fingerprint -}}
 <script src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
+{{ end }}
 
 </body>
 
