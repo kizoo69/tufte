@@ -1,3 +1,15 @@
+// Custom font stacks from site params — set before @import so they take precedence
+// (variables.scss defines the same vars with !default as fallback)
+{{ with .Site.Params.fonts.serif -}}
+$serif-fonts: {{ . }}, et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, "Noto Serif KR", "Noto Serif JP", "Noto Serif SC", "Noto Serif TC", serif;
+{{ end -}}
+{{ with .Site.Params.fonts.sans -}}
+$sans-fonts: {{ . }}, Lato, "Gill Sans", "Gill Sans MT", Calibri, "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", "Noto Sans TC", sans-serif;
+{{ end -}}
+{{ with .Site.Params.fonts.mono -}}
+$mono-fonts: {{ . }}, "Spline Sans Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+{{ end -}}
+
 // Tufte
 @import "tufte";
 

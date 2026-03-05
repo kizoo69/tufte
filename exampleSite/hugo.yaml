@@ -43,6 +43,11 @@ params:
   showSummary: true
   # Site wide kill switch for MathJax support
   math: true
+  # Custom font stacks (prepended before theme defaults; omit to use defaults)
+  # fonts:
+  #   serif: '"Nanum Myeongjo"'
+  #   sans:  '"Nanum Gothic"'
+  #   mono:  '"D2Coding"'
 
 taxonomies:
   category: categories
