@@ -1,9 +1,3 @@
-{{ $loc := .Get 0  }}
-{{ if .IsNamedParams }}
-  <section {{with .Get "class"}} class="{{.}}"{{end}}{{with .Get "id"}} id="{{.}}"{{end}}>
-{{ else if or (eq $loc "") (eq $loc "begin") }}
-  <section>
-{{ else if eq $loc "end" }}
-  </section>
-{{ end }}
-    
+<section{{with .Get "class"}} class="{{ . }}"{{end}}{{with .Get "id"}} id="{{ . }}"{{end}}>
+{{ .Inner | $.Page.RenderString (dict "display" "block") }}
+</section>

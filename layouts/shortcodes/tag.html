@@ -1,5 +1,4 @@
-{{ if .IsNamedParams }}
-  <{{ .Get "name" }}{{with .Get "class"}} class="{{.}}"{{end}}{{with .Get "id"}} id="{{.}}"{{end}}>
-{{ else }}
-  <{{ .Get 0 }}>
-{{ end }}
+{{- $tag := .Get "name" | default (.Get 0) -}}
+<{{ $tag }}{{with .Get "class"}} class="{{ . }}"{{end}}{{with .Get "id"}} id="{{ . }}"{{end}}>
+{{ .Inner | $.Page.RenderString (dict "display" "block") }}
+</{{ $tag }}>
