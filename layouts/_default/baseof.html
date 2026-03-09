@@ -4,15 +4,15 @@
 
 <body>
 
-{{ block "main" . }}{{ end }}
+  {{ block "main" . }}{{ end }}
 
 <!-- Load MathJax, if necessary. -->
 {{ if or .Params.math .IsHome }}
 {{ partial "math.html" . }}
 {{ end }}
 
-<!-- Load Mermaid, if necessary. -->
-{{ if .Page.Store.Get "hasMermaid" }}
+  <!-- Load Mermaid, if necessary. -->
+  {{ if .Page.Store.Get "hasMermaid" }}
   {{- $mermaidJS := resources.Get "lib/mermaid/mermaid.min.js" | fingerprint -}}
   <script src="{{ $mermaidJS.RelPermalink }}" integrity="{{ $mermaidJS.Data.Integrity }}"></script>
   <script>
@@ -20,78 +20,78 @@
       startOnLoad: true,
       theme: {{ .Site.Params.mermaid.theme | default "neutral" | jsonify | safeJS }},
       {{- with .Site.Params.mermaid.themeCSS }}
-      themeCSS: {{ . | jsonify | safeJS }},
-      {{- end }}
+    themeCSS: {{ . | jsonify | safeJS }},
+    {{- end }}
     });
   </script>
-{{ end }}
+  {{ end }}
 
 <!-- Search -->
 {{ if .Site.Params.search.enable }}
 {{ partial "search.html" . }}
 {{ end }}
 
-<!-- Menu toggle -->
-<button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
-<nav id="menu-panel" class="floating-panel" aria-label="Site navigation">
-  <ul>
-    {{- range .Site.Menus.nav }}
-    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-    {{- end }}
-  </ul>
-</nav>
+  <!-- Menu toggle -->
+  <button id="menu-toggle" class="floating-toggle" aria-label="Menu" aria-expanded="false"></button>
+  <nav id="menu-panel" class="floating-panel" aria-label="Site navigation">
+    <ul>
+      {{- range .Site.Menus.nav }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{- end }}
+    </ul>
+  </nav>
 
-<!-- TOC toggle -->
-{{ if .TableOfContents | findRE "<li>" }}
-<button id="toc-toggle" class="floating-toggle" aria-label="Table of contents" aria-expanded="false"></button>
-<nav id="toc-panel" class="floating-panel" aria-label="Table of contents">
-  {{ .TableOfContents }}
-</nav>
-{{ end }}
+  <!-- TOC toggle -->
+  {{ if .TableOfContents | findRE "<li>" }}
+    <button id="toc-toggle" class="floating-toggle" aria-label="Table of contents" aria-expanded="false"></button>
+    <nav id="toc-panel" class="floating-panel" aria-label="Table of contents">
+      {{ .TableOfContents }}
+    </nav>
+    {{ end }}
 
-<script>
-(function() {
-  function setupPanel(toggleId, panelId) {
-    var btn = document.getElementById(toggleId);
-    var panel = document.getElementById(panelId);
-    if (!btn || !panel) return;
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var expanded = panel.classList.toggle('open');
-      btn.setAttribute('aria-expanded', expanded);
-    });
-    panel.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') {
-        panel.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-  setupPanel('menu-toggle', 'menu-panel');
-  setupPanel('toc-toggle', 'toc-panel');
-  document.addEventListener('click', function(e) {
-    document.querySelectorAll('.floating-panel.open').forEach(function(panel) {
-      var toggleId = panel.id.replace('-panel', '-toggle');
-      var btn = document.getElementById(toggleId);
-      if (!panel.contains(e.target) && e.target !== btn) {
-        panel.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
-})();
-</script>
+    <script>
+      (function () {
+        function setupPanel(toggleId, panelId) {
+          var btn = document.getElementById(toggleId);
+          var panel = document.getElementById(panelId);
+          if (!btn || !panel) return;
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var expanded = panel.classList.toggle('open');
+            btn.setAttribute('aria-expanded', expanded);
+          });
+          panel.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+              panel.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+        setupPanel('menu-toggle', 'menu-panel');
+        setupPanel('toc-toggle', 'toc-panel');
+        document.addEventListener('click', function (e) {
+          document.querySelectorAll('.floating-panel.open').forEach(function (panel) {
+            var toggleId = panel.id.replace('-panel', '-toggle');
+            var btn = document.getElementById(toggleId);
+            if (!panel.contains(e.target) && e.target !== btn) {
+              panel.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      })();
+    </script>
 
-<!-- Back to top button -->
-<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">^</button>
-<script>
-(function() {
-  var btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', function() {
-    btn.classList.toggle('visible', window.scrollY > 300);
-  });
-})();
-</script>
+    <!-- Back to top button -->
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">^</button>
+    <script>
+      (function () {
+        var btn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function () {
+          btn.classList.toggle('visible', window.scrollY > 300);
+        });
+      })();
+    </script>
 
 {{ if .Site.Params.search.enable }}
 <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.min.js"></script>
