@@ -24,10 +24,13 @@
 {{- $fontsURL := printf "https://fonts.googleapis.com/css2?family=%s&display=swap" (delimit $families "&family=") -}}
 <link rel="stylesheet" href="{{ $fontsURL | safeURL }}" />
 
-<!-- Load stylesheets -->
 {{ $options := (dict "targetPath" "/css/tufte.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
 {{ $style := resources.Get "scss/main.scss"| resources.ExecuteAsTemplate "main.scss" . | css.Sass $options }}
 
 {{ $optOptions := (dict "targetPath" "/css/tufte-options.min.css" "outputStyle" "compressed" "enableSourceMap" true) }}
 {{ $optStyle := resources.Get "scss/tufte-options.scss"| resources.ExecuteAsTemplate "tufte-options.scss" . | css.Sass
 $optOptions }}
+
+<!-- Load stylesheets -->
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
+<link rel="stylesheet" href="{{ $optStyle.Permalink | relURL }}">
