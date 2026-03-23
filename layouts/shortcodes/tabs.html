@@ -1,0 +1,32 @@
+{{- $_ := .Inner -}}{{/* trigger child shortcodes */}}
+{{- $tabs := .Page.Store.Get "pending-tabs" | default slice -}}
+{{- .Page.Store.Set "pending-tabs" slice -}}
+
+{{- if not (.Page.Store.Get "tabs-script-loaded") -}}
+{{- .Page.Store.Set "tabs-script-loaded" true -}}
+<script>
+document.addEventListener('click', function(e) {
+  if (!e.target.matches('.tab-btn')) return;
+  var wrapper = e.target.closest('.tabs-wrapper');
+  wrapper.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  wrapper.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  e.target.classList.add('active');
+  wrapper.querySelectorAll('.tab-panel')[parseInt(e.target.dataset.idx)].classList.add('active');
+});
+</script>
+{{- end -}}
+
+<div class="tabs-wrapper">
+  <div class="tabs-nav">
+    {{- range $i, $tab := $tabs -}}
+    <button class="tab-btn{{- if eq $i 0 }} active{{- end -}}" data-idx="{{ $i }}">{{ $tab.label }}</button>
+    {{- end -}}
+  </div>
+  <div class="tab-panels">
+    {{- range $i, $tab := $tabs -}}
+    <div class="tab-panel{{- if eq $i 0 }} active{{- end -}}">
+      {{- $tab.content | $.Page.RenderString (dict "display" "block") -}}
+    </div>
+    {{- end -}}
+  </div>
+</div>

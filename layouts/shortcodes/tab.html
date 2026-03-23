@@ -1,0 +1,3 @@
+{{- $tabs := .Page.Store.Get "pending-tabs" | default slice -}}
+{{- $label := .Get 0 | default (.Get "name") | default "Tab" -}}
+{{- .Page.Store.Set "pending-tabs" ($tabs | append (dict "label" $label "content" .Inner)) -}}

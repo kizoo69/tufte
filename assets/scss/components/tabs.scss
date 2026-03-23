@@ -1,0 +1,57 @@
+.tabs-wrapper {
+  margin: 1.4em 0 1.4em 2.5%;
+  width: 52.5%;
+}
+
+.tabs-nav {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.tab-btn {
+  padding: 0.4em 1em;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85em;
+  color: #666;
+  position: relative;
+  bottom: -1px;
+
+  &.active {
+    border-color: #ccc;
+    border-bottom-color: #fffff8;
+    background: #fffff8;
+    color: #111;
+  }
+
+  &:hover:not(.active) {
+    color: #333;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.tab-panel {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  .highlight {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .tabs-wrapper {
+    width: 90%;
+    margin-left: 0;
+  }
+}
