@@ -53,7 +53,6 @@ themes/tufte/
 │   │   ├── chapters.html                     # book 타입: 챕터 목록
 │   │   └── volumes.html                      # book 타입: 볼륨 목록
 │   ├── partials/
-│   │   ├── baseof.html                       # (없음 — _default/baseof.html 사용)
 │   │   ├── brand.html                        # 헤더 브랜드 영역
 │   │   ├── content.header.html               # 글 제목·메타 영역
 │   │   ├── footer.html                       # 푸터
