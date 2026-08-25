@@ -1,5 +1,7 @@
 /* Footer, but with a different name to avoid conflicts with tufte.css */
 footer.page-footer {
+    /* 본문 밖으로 넘친 sidenote/marginnote float 아래로 내려간다 */
+    clear: both;
     font-family: $sans-fonts;
     margin-top: 1.4rem;
     color: #aaa;
