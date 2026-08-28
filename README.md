@@ -86,6 +86,7 @@ Switched from KaTeX to MathJax 3 because:
 - Home page filters out `type: book` pages
 - **Table Layout Fix**: Added a table render hook to wrap Markdown tables in a scrollable container (`.table-wrapper`), preventing overlap with margin notes on narrow screens.
 - **Details Layout Fix**: Improved `details` tag styling to respect the 55% content width and fixed double-shrinking of nested elements.
+- **Figure Margin Note Fix**: Fixed a whitespace/trim bug in `figure.html`, inherited from upstream, where the `title`/`caption`/`attr` output left a blank line inside `<span class="marginnote">` and wrapped the text in a stray `<p>` from `markdownify`. Harmless in normal page content, since shortcode output there is inserted as an already-rendered string — but it broke apart when nested inside a shortcode that re-parses its `.Inner` through `RenderString` (our own `details` shortcode, for one): the blank line split the HTML block in two, so the caption landed outside the marginnote instead of under its image. Added trim markers and stripped the `<p>` wrapper so the whole marginnote renders as one block regardless of nesting.
 
 ## Installation
 

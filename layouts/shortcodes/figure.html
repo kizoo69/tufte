@@ -39,9 +39,15 @@
 
 {{- end -}}<!--  child for margin or normal (end) -->
 
-{{ with .Get "title"}}<strong>{{ . | markdownify }}. </strong>{{ end}}
-{{ with .Get "caption"}}{{ . | markdownify }}{{ end }}
-{{ with .Get "attr" }}{{ . | markdownify }}.{{ end }}
+{{- with .Get "title" -}}
+  <strong>{{ (. | markdownify | strings.TrimPrefix "<p>" | strings.TrimSuffix "</p>\n") | safeHTML }}. </strong>
+{{- end -}}
+{{- with .Get "caption" -}}
+  {{ (. | markdownify | strings.TrimPrefix "<p>" | strings.TrimSuffix "</p>\n") | safeHTML }}
+{{- end -}}
+{{- with .Get "attr" -}}
+  {{ (. | markdownify | strings.TrimPrefix "<p>" | strings.TrimSuffix "</p>\n") | safeHTML }}.
+{{- end -}}
 
 <!-- end child elements -->
 {{ if eq $type "full" }}<!-- end full -->
