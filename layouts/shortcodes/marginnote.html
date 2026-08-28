@@ -2,4 +2,4 @@
 {{- $ind := .Get "ind" | default .Site.Params.marginNoteInd -}}
 <label for="{{ $id }}" class="margin-toggle marginnote-ind">{{ $ind }}</label>
 <input type="checkbox" id="{{ $id }}" class="margin-toggle"/>
-<span class="marginnote"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ .Inner | markdownify }}</span>
+<span class="marginnote"{{ with .Get "lang" }} lang="{{ . }}"{{ end }}>{{ (.Inner | markdownify | replaceRE `</p>\s*<p>` "<br><br>" | replaceRE `^<p>` "" | replaceRE `</p>\s*$` "") | safeHTML }}</span>
